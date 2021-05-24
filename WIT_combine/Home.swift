@@ -69,14 +69,20 @@ struct HomePage : View {
                     Image(systemName: "house.fill")
                 }
                 NavigationView {
-                    VStack(){
+//                    VStack(){
+//                        NavView(colWidth: colWidth, x:$x)
+//                        MainView()
+//                    }
+                    VStack {
                         NavView(colWidth: colWidth, x:$x)
-                        MainView()
+                        closetView()
+                            .padding(.top, 30)
                     }
-                    .navigationBarHidden(true)
+                        .navigationBarHidden(true)
                 }
                 .tabItem {
-                    Image(systemName: "magnifyingglass")
+//                    Image(systemName: "magnifyingglass")
+                    Image(systemName: "square.grid.3x3.fill")
                 }
                 NavigationView {
                     VStack(){
