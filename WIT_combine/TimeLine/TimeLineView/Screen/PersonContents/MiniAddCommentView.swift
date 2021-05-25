@@ -34,7 +34,7 @@ struct MiniAddCommentView: View {
                 } label : {
                     Image(systemName: "plus.circle")
                         .frame(width: 20)
-                        .padding(.trailing,35)
+                        .padding(.trailing,65)
                 }
         }
             .padding(.leading,5)

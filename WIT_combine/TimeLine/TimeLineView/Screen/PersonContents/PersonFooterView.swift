@@ -29,7 +29,7 @@ struct PersonFooterView: View {
                     .padding(.bottom,5)
                     Spacer()
                 }
-                CommentsLinkViews(comments: content.comments)
+                CommentsLinkViews(comments: content.comments , content: content, colWidth:colWidth)
                 MiniAddCommentView(person:content.owner)
             }
         }

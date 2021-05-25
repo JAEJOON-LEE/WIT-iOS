@@ -57,16 +57,41 @@ class PersonApi {
 class CommentsApi {
     
     fileprivate static var comments: [Comment] = [
-        Comment(owner: PersonApi.people[2],respondingTo: PersonApi.people[1],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[1],respondingTo: PersonApi.people[0],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[0],respondingTo: PersonApi.people[1],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[2],respondingTo: PersonApi.people[2],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[1],respondingTo: PersonApi.people[2],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[0],respondingTo: PersonApi.people[1],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[3],respondingTo: PersonApi.people[3],text: "Terrific post!"),
-        Comment(owner: PersonApi.people[3],respondingTo: PersonApi.people[0],text: "Terrific post!"),
+        Comment(owner: PersonApi.people[2],respondingId: PersonApi.people[1].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[1],respondingId: PersonApi.people[0].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[0],respondingId: PersonApi.people[1].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[2],respondingId: PersonApi.people[2].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[1],respondingId: PersonApi.people[2].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[0],respondingId: PersonApi.people[1].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[3],respondingId: PersonApi.people[3].id,text: "Terrific post!"),
+        Comment(owner: PersonApi.people[3],respondingId: PersonApi.people[0].id,text: "Terrific post!"),
     
     ]
+    init() {
+        CommentsApi.comments[0].responses = [
+            Comment(
+                owner: PersonApi.people[1],
+                respondingId: PersonApi.people[1].id,
+                text: "aksdjfkldkjflsakl;jfkldjklsajfdkljklsdfklsfd"),
+        ]
+        CommentsApi.comments[2].responses = [
+            Comment(
+                owner: PersonApi.people[2],
+                respondingId: PersonApi.people[3].id,
+                text: "aksdjfkldkjflsaklsfd"),
+            Comment(
+                owner: PersonApi.people[0],
+                respondingId: PersonApi.people[1].id,
+                text: "aksdjfkldkjflsaklsfd")
+        ]
+        CommentsApi.comments[0].responses = [
+            Comment(
+                owner: PersonApi.people[3],
+                respondingId: PersonApi.people[1].id,
+                text: "aksdjfkldkjf"),
+        ]
+        
+    }
     func getComments() -> [Comment] {
         return CommentsApi.comments
     }
