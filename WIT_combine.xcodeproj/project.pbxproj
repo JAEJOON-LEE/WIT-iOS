@@ -100,7 +100,7 @@
 		B049CEB0265BDCFF00431616 /* WIT_combine */ = {
 			isa = PBXGroup;
 			children = (
-				B049CEF0265BE33C00431616 /* TimeLineView */,
+				B0959DEA265CF0F1007ABD5A /* TimeLine */,
 				B049CEC4265BDDE700431616 /* Home.swift */,
 				B049CEC9265BDDE700431616 /* NavView.swift */,
 				B049CECE265BDDE800431616 /* logIn.swift */,
@@ -129,7 +129,6 @@
 			isa = PBXGroup;
 			children = (
 				B049CEF2265BE3BB00431616 /* Screen */,
-				B049CEF1265BE3B000431616 /* Common */,
 			);
 			path = TimeLineView;
 			sourceTree = "<group>";
@@ -138,10 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				B049CEE6265BDEDC00431616 /* TextStyle.swift */,
-				B049CEE9265BDEDC00431616 /* UserContent.swift */,
-				B049CEE8265BDEDC00431616 /* Person.swift */,
 				B049CEE5265BDEDC00431616 /* Comment.swift */,
 				B049CEE7265BDEDC00431616 /* ApiService.swift */,
+				B049CEE8265BDEDC00431616 /* Person.swift */,
+				B049CEC8265BDDE700431616 /* News.swift */,
+				B049CEE9265BDEDC00431616 /* UserContent.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -159,7 +159,6 @@
 		B049CEF8265BE4FF00431616 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				B049CEC8265BDDE700431616 /* News.swift */,
 				B049CED1265BDDE800431616 /* NewsViewModel.swift */,
 				B049CECA265BDDE700431616 /* NewsView.swift */,
 			);
@@ -169,12 +168,12 @@
 		B049CEFA265BE51D00431616 /* PersonContents */ = {
 			isa = PBXGroup;
 			children = (
-				B049CECF265BDDE800431616 /* PersonFooterView.swift */,
 				B049CECB265BDDE700431616 /* FooterActionBarView.swift */,
+				B049CECF265BDDE800431616 /* PersonFooterView.swift */,
+				B049CECC265BDDE700431616 /* PersonHeaderView.swift */,
 				B049CED0265BDDE800431616 /* MiniAddCommentView.swift */,
 				B049CEC5265BDDE700431616 /* MiniAddCommentViewModel.swift */,
 				B049CEC6265BDDE700431616 /* PersonBodyViewModel.swift */,
-				B049CECC265BDDE700431616 /* PersonHeaderView.swift */,
 				B049CEC1265BDD8300431616 /* CommentsLinkViews.swift */,
 				B049CED2265BDDE800431616 /* PersonBodyView.swift */,
 			);
@@ -187,6 +186,15 @@
 				B049CED3265BDDE800431616 /* TimeLineView.swift */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		B0959DEA265CF0F1007ABD5A /* TimeLine */ = {
+			isa = PBXGroup;
+			children = (
+				B049CEF1265BE3B000431616 /* Common */,
+				B049CEF0265BE33C00431616 /* TimeLineView */,
+			);
+			path = TimeLine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
