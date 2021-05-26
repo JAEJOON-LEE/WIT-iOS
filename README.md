@@ -1,5 +1,5 @@
 # iOSAppProgramming
 
-Mobile App Programming 2 Final Project Team 9 화이팅!!
+## Mobile App Programming 2 Final Project Team 9 - WIT
 
-good luck!
+contributor : Jaejoon Lee, Seungmin Lee, Juyeong Jung, Gyurim Park
