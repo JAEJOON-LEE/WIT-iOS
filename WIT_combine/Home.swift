@@ -59,13 +59,13 @@ struct HomePage : View {
             let colWidth = geometry.size.width / 3
 
             TabView {
-//                NavigationView{
+                NavigationView{
                 VStack(){
                     NavView(colWidth: colWidth, x:$x)
                     TimeLineView(colWidth:colWidth)
                 }
-//                .navigationBarHidden(true)
-//                }
+                .navigationBarHidden(true)
+                }
                 .tabItem {
                     Image(systemName: "house.fill")
                 }

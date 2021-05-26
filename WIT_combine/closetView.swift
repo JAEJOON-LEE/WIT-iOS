@@ -9,7 +9,6 @@ import SwiftUI
 
 struct closetView: View {
     @State var showingSheet = false
-    @State var tempCloth : Product = Product(name: "", image: "product1" , brand: "", price: 0)
     
     var products : [Product] = [
         Product(name: "코듀로이 오버 칼라 아노락 스웨트셔츠", image : "product1", brand: "라퍼지스토어", price: 26535),
@@ -41,18 +40,10 @@ struct closetView: View {
                     GridItem(.flexible(maximum: 100))
                 ]) {
                     ForEach(products, id : \.self) { product in
-    //                    Image($0.image)
                         NavigationLink(destination: itemInfo(product : product)) {
                             Image(product.image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
-        //                        .onTapGesture {
-        //                            showingSheet = true
-        //                            tempCloth = product
-        //                        }
-        //                        .sheet(isPresented: $showingSheet) {
-        //                            itemInfo(product: tempCloth)
-        //                        }
                         }.navigationBarHidden(true)
                     }
                 }
