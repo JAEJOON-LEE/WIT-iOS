@@ -22,8 +22,7 @@ struct logIn: View {
     @State var authenticationDidSucceed: Bool = false
     
     var body: some View {
-        
-        ZStack {
+        NavigationView{
             VStack {
                 HelloText()
                 UserImage()
@@ -45,7 +44,7 @@ struct logIn: View {
                         self.authenticationDidSucceed = false
                     }
                 }) {
-                    NavigationLink(destination: Home()){
+                        NavigationLink(destination: Home()){
                         LoginButtonContent()
                     }
                 }
@@ -66,8 +65,8 @@ struct logIn: View {
                         .cornerRadius(20.0)
                         .animation(Animation.default)
             }
-        }
     }
+}
 }
 
 struct HelloText: View {

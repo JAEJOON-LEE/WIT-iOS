@@ -23,6 +23,7 @@ struct Home : View {
                     }
                 })
         }
+        .navigationBarBackButtonHidden(true)
         .gesture(DragGesture().onChanged({ (value) in
             withAnimation{
                 if value.translation.width > 0 {
@@ -58,17 +59,16 @@ struct HomePage : View {
             let colWidth = geometry.size.width / 3
 
             TabView {
-                NavigationView {
+//                NavigationView{
                     VStack(){
                         NavView(colWidth: colWidth, x:$x)
                         TimeLineView(colWidth:colWidth)
                     }
-                    .navigationBarHidden(true)
-                }
+//                    .navigationBarHidden(true)
+//                }
                 .tabItem {
                     Image(systemName: "house.fill")
                 }
-                NavigationView {
 //                    VStack(){
 //                        NavView(colWidth: colWidth, x:$x)
 //                        MainView()
@@ -78,29 +78,23 @@ struct HomePage : View {
                         closetView()
                             .padding(.top, 30)
                     }
-                        .navigationBarHidden(true)
-                }
                 .tabItem {
 //                    Image(systemName: "magnifyingglass")
                     Image(systemName: "square.grid.3x3.fill")
                 }
-                NavigationView {
+                
                     VStack(){
                         NavView(colWidth: colWidth, x:$x)
                         MainView()
                     }
-                    .navigationBarHidden(true)
-                }
                 .tabItem {
                     Image(systemName: "heart")
                 }
-                NavigationView {
+                
                     VStack(){
                         NavView(colWidth: colWidth, x:$x)
                         MainView()
                     }
-                    .navigationBarHidden(true)
-                }
                 .tabItem {
                     Image(systemName: "person")
                 }
