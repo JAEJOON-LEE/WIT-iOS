@@ -33,23 +33,73 @@ struct closetView: View {
 //        List(products, id : \.self) {
 //            itemCardView(product : $0)
 //        }
-        ScrollView {
-            LazyVGrid(columns: [GridItem(.flexible(maximum: 100)), GridItem(.flexible(maximum: 100)), GridItem(.flexible(maximum: 100))
-            ]) {
-                ForEach(products, id : \.self) { product in
-//                    Image($0.image)
-                    Image(product.image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .onTapGesture {
-                            showingSheet = true
-                            tempCloth = product
-                        }
-                        .sheet(isPresented: $showingSheet) {
-                            itemInfo(product: tempCloth)
-                        }
+        NavigationView {
+            ScrollView {
+                LazyVGrid(columns: [
+                    GridItem(.flexible(maximum: 100)),
+                    GridItem(.flexible(maximum: 100)),
+                    GridItem(.flexible(maximum: 100))
+                ]) {
+                    ForEach(products, id : \.self) { product in
+    //                    Image($0.image)
+                        NavigationLink(destination: itemInfo(product : product)) {
+                            Image(product.image)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+        //                        .onTapGesture {
+        //                            showingSheet = true
+        //                            tempCloth = product
+        //                        }
+        //                        .sheet(isPresented: $showingSheet) {
+        //                            itemInfo(product: tempCloth)
+        //                        }
+                        }.navigationBarHidden(true)
+                    }
                 }
-            }
+            } // scrollview
+        } // navigationview
+    }
+}
+
+struct itemInfo : View {
+//    @Environment(\.presentationMode) var presentationMode
+    let product: Product
+    @State var isClicked : Bool = false
+    
+    var body: some View {
+        VStack {
+            Image(product.image)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 300, height: 330)
+            Text(product.name)
+                .font(.system(size: 20))
+    //        Text("브랜드 : \(product.brand)")
+            Text("가격 : \(product.price)")
+            Rectangle()
+                .frame(width: 50, height: 50)
+                .foregroundColor(product.avgColor)
+                .onTapGesture {
+                    isClicked = true
+                }
+    //        Button("닫기") {
+    //            presentationMode.wrappedValue.dismiss()
+    //        }
+        }.navigationBarTitle(Text(product.brand))//, displayMode: .inline)
+        .sheet(isPresented: $isClicked) {
+            recommendItemView(product: product)
+        }
+    }
+}
+
+struct recommendItemView : View {
+    let product : Product
+    var body : some View {
+        HStack {
+            Rectangle()
+                .foregroundColor(product.avgColor)
+                .frame(width : 100, height : 50)
+            Text("이 옷과 어울리는 옷들")
         }
     }
 }

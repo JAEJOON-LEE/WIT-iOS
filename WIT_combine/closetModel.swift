@@ -23,29 +23,6 @@ struct Product : Hashable {
     }
 }
 
-struct itemInfo : View {
-    @Environment(\.presentationMode) var presentationMode
-    let product: Product
-    
-    var body: some View {
-        Image(product.image)
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 300, height: 330)
-        Text(product.name)
-            .font(.system(size: 20))
-        Text("브랜드 : \(product.brand)")
-        Text("가격 : \(product.price)")
-        Rectangle()
-            .frame(width: 50, height: 50)
-            .foregroundColor(product.avgColor)
-        Button("닫기") {
-            presentationMode.wrappedValue.dismiss()
-        }
-        .padding()
-    }
-}
-
 // reference : https://medium.com/swlh/swiftui-read-the-average-color-of-an-image-c736adb43000
 extension UIImage {
     var avgColor : UIColor? {

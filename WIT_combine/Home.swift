@@ -60,41 +60,35 @@ struct HomePage : View {
 
             TabView {
 //                NavigationView{
-                    VStack(){
-                        NavView(colWidth: colWidth, x:$x)
-                        TimeLineView(colWidth:colWidth)
-                    }
-//                    .navigationBarHidden(true)
+                VStack(){
+                    NavView(colWidth: colWidth, x:$x)
+                    TimeLineView(colWidth:colWidth)
+                }
+//                .navigationBarHidden(true)
 //                }
                 .tabItem {
                     Image(systemName: "house.fill")
                 }
-//                    VStack(){
-//                        NavView(colWidth: colWidth, x:$x)
-//                        MainView()
-//                    }
-                    VStack {
-                        NavView(colWidth: colWidth, x:$x)
-                        closetView()
-                            .padding(.top, 30)
-                    }
+                VStack {
+                    NavView(colWidth: colWidth, x:$x)
+                    closetView()
+                }
                 .tabItem {
-//                    Image(systemName: "magnifyingglass")
                     Image(systemName: "square.grid.3x3.fill")
                 }
-                
-                    VStack(){
-                        NavView(colWidth: colWidth, x:$x)
-                        MainView()
-                    }
+    
+                VStack(){
+                    NavView(colWidth: colWidth, x:$x)
+                    MainView()
+                }
                 .tabItem {
                     Image(systemName: "heart")
                 }
                 
-                    VStack(){
-                        NavView(colWidth: colWidth, x:$x)
-                        MainView()
-                    }
+                VStack(){
+                    NavView(colWidth: colWidth, x:$x)
+                    MainView()
+                }
                 .tabItem {
                     Image(systemName: "person")
                 }
