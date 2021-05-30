@@ -9,6 +9,7 @@ import SwiftUI
 
 struct closetView: View {
     @State var showingSheet = false
+    @State var showCategorySelector = false
     
     var products : [Product] = [
         Product(name: "코듀로이 오버 칼라 아노락 스웨트셔츠", image : "product1", brand: "라퍼지스토어", price: 26535),
@@ -33,21 +34,56 @@ struct closetView: View {
 //            itemCardView(product : $0)
 //        }
         NavigationView {
-            ScrollView {
-                LazyVGrid(columns: [
-                    GridItem(.flexible(maximum: 100)),
-                    GridItem(.flexible(maximum: 100)),
-                    GridItem(.flexible(maximum: 100))
-                ]) {
-                    ForEach(products, id : \.self) { product in
-                        NavigationLink(destination: itemInfo(product : product)) {
-                            Image(product.image)
-                                .resizable()
-                                .aspectRatio(contentMode: .fill)
-                        }.navigationBarHidden(true)
+            ZStack(alignment : .bottomTrailing) {
+                ScrollView {
+                    LazyVGrid(columns: [
+                        GridItem(.flexible(maximum: 100)),
+                        GridItem(.flexible(maximum: 100)),
+                        GridItem(.flexible(maximum: 100))
+                    ]) {
+                        ForEach(products, id : \.self) { product in
+                            NavigationLink(destination: itemInfo(product : product)) {
+                                Image(product.image)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            }.navigationBarHidden(true)
+                        }
+                    }
+                } // scrollview
+                
+                Button {
+                    withAnimation {
+                        showCategorySelector = true
+                    }
+                } label : {
+//                    Image(systemName: "rectangle.3.offgrid.fill")
+//                    Text("+")
+//                        .font(.system(size : 30))
+//                        .foregroundColor(.white)
+//                        .padding()
+//                        .clipShape(Circle())
+                    Circle()
+                        .frame(width: 60, height: 60)
+                        .padding(15)
+                }
+                if showCategorySelector {
+                    VStack {
+                        Button(action: {
+                            //withAnimation {
+                                showCategorySelector = false
+                            //}
+                        }, label: {
+                            Text("X")
+                        })
+                        Image("marneking")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 400, height : 600)
+                            .foregroundColor(.gray)
                     }
                 }
-            } // scrollview
+            } // ZStack
+            
         } // navigationview
     }
 }
