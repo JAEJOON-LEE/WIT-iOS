@@ -9,13 +9,17 @@ import SwiftUI
 
 struct Product : Hashable {
     var name : String
+    var cate : String
+    var subCate: String
     var image : String
     var brand : String
     var price : Int
     var avgColor : Color
     
-    init(name : String, image : String, brand : String, price : Int) {
+    init(name : String, cate: String, subCate: String, image : String, brand : String, price : Int) {
         self.name = name
+        self.cate = cate
+        self.subCate = subCate
         self.image = image
         self.brand = brand
         self.price = price
