@@ -79,12 +79,18 @@ struct HomePage : View {
     
                 VStack(){
                     NavView(colWidth: colWidth, x:$x)
+                    searchView()
+                }
+                .tabItem {
+                    Image(systemName: "text.magnifyingglass")
+                }
+                VStack(){
+                    NavView(colWidth: colWidth, x:$x)
                     MainView()
                 }
                 .tabItem {
                     Image(systemName: "heart")
                 }
-                
                 VStack(){
                     NavView(colWidth: colWidth, x:$x)
                     MainView()

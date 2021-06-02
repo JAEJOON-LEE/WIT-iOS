@@ -51,7 +51,8 @@ struct closetView: View {
                                 Image(product.image)
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
-                            }.navigationBarHidden(true)
+                            }
+                            .navigationBarHidden(true)
                         }
                     }
                 } // scrollview
