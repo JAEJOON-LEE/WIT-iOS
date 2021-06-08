@@ -62,14 +62,12 @@ struct closetView: View {
                         showCategorySelector = true
                     }
                 } label : {
-//                    Image(systemName: "rectangle.3.offgrid.fill")
-//                    Text("+")
-//                        .font(.system(size : 30))
-//                        .foregroundColor(.white)
-//                        .padding()
-//                        .clipShape(Circle())
-                    Circle()
-                        .frame(width: 60, height: 60)
+                    Image(systemName: "rectangle.3.offgrid.fill")
+                        .font(.system(size : 30))
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .clipShape(Circle())
                         .padding(15)
                 }
                 if showCategorySelector {
@@ -98,48 +96,59 @@ struct itemInfo : View {
 //    @Environment(\.presentationMode) var presentationMode
     let product: Product
     @State var isClicked : Bool = false
-    
+    @State private var scaleValue = CGFloat(1)
+
     var body: some View {
         ScrollView{
             GeometryReader { geometry in
-                VStack(alignment: .center) {
+                VStack {
+                    HStack {
+                        Text(product.name)
+                            .font(.custom("Roboto Regular", size: 25))
+                        Spacer()
+                    }.padding(.horizontal, 17)
+                    Spacer()
+                        .frame(height : 10)
+                    
+                    HStack {
+                        Text("\(product.cate) > \(product.subCate)")
+                            .font(.custom("Roboto Regular", size: 18))
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Text("₩\(product.price)")
+                            .font(.custom("Roboto Regular", size: 23))
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    // product Image
                     Image(product.image)
                         .resizable()
                             .aspectRatio(contentMode: .fill)
                         .frame(width: geometry.size.width*0.80, height: 350)
                             .clipped()
                         .frame(width: geometry.size.width*0.80, height: 350)
-                    
-                    Text(product.name)
-                        .font(.custom("Roboto Regular", size: 20))
-                        .frame(width: geometry.size.width*0.80, height: 60,alignment: .topLeading)
-                    
-                    
-                    HStack{
-                        Text("\(product.cate) > \(product.subCate)").font(.custom("Roboto Regular", size: 16)).foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 0.37)))
-                        
-                        Spacer(minLength: 50)
-                        
-                        Text("\(product.price)₩")
-                            .font(.custom("Roboto Regular", size: 16))
-                            
-                    }.frame(width: 370, height: 60,alignment: .topLeading)
+                        .padding(10)
+                        // tap effect
+                        .scaleEffect(self.scaleValue)
+                        .onTapGesture {
+                            withAnimation { self.scaleValue = 1.05 }
+                            withAnimation(Animation.linear.delay(0.2)) { self.scaleValue = 1.0 }
+                        }
                     
                     
-                    Rectangle()
-                        .frame(width: 50, height: 50)
-                        .foregroundColor(product.avgColor)
+                
+                    Text("이 옷과 어울리는 옷 보기")
+                        .frame(width: geometry.size.width * 0.7, height: 50)
+                        .foregroundColor(Color.white)
+                        .background(product.avgColor)
                         .cornerRadius(15)
                         .onTapGesture {
                             isClicked = true
                         }
-                    
-            //        Button("닫기") {
-            //            presentationMode.wrappedValue.dismiss()
-            //        }
-                }.navigationBarTitle(Text(product.brand))//, displayMode: .inline)
+                }
+                .navigationBarTitle(Text(product.brand))//, displayMode: .inline)
                 .sheet(isPresented: $isClicked) {
-                    recommendItemView(product: product)
+                    recommendItemView(product: product, isClicked: $isClicked)
                 }
             }
         }
@@ -148,12 +157,28 @@ struct itemInfo : View {
 
 struct recommendItemView : View {
     let product : Product
+    @Binding var isClicked : Bool
+    
     var body : some View {
         HStack {
             Rectangle()
                 .foregroundColor(product.avgColor)
-                .frame(width : 100, height : 50)
-            Text("이 옷과 어울리는 옷들")
-        }
+                .frame(width : 50, height : 50)
+                .cornerRadius(10)
+            Text("이 옷과 어울리는 옷") // temp
+                .font(.custom("Roboto Regular", size: 25))
+            Spacer()
+                .frame(width : 50)
+            Button {
+                isClicked = false
+            } label: {
+                Image(systemName: "xmark")
+                    .font(.system(size : 20))
+                    .foregroundColor(.black)
+            }
+        } // HStack
+        .padding(.top, 20)
+        Spacer()
+        // recommend clothes with algorithm
     }
 }
