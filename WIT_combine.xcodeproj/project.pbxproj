@@ -11,6 +11,8 @@
 		1AD3DF85265CE8A200D8C939 /* closetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3DF83265CE8A200D8C939 /* closetModel.swift */; };
 		8C1F35D4266765DE00A3CF7A /* searchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F35D3266765DE00A3CF7A /* searchView.swift */; };
 		8CB9B85C2678E36C00F4FBAF /* categoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9B85B2678E36C00F4FBAF /* categoryView.swift */; };
+		B00DBB8E26793E0C0006CC40 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00DBB8D26793E0C0006CC40 /* ImagePicker.swift */; };
+		B00DBB9226793E2D0006CC40 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00DBB9126793E2D0006CC40 /* PostView.swift */; };
 		B049CEB2265BDCFF00431616 /* WIT_combineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B049CEB1265BDCFF00431616 /* WIT_combineApp.swift */; };
 		B049CEB4265BDCFF00431616 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B049CEB3265BDCFF00431616 /* ContentView.swift */; };
 		B049CEB6265BDD0100431616 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B049CEB5265BDD0100431616 /* Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		1AD3DF83265CE8A200D8C939 /* closetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = closetModel.swift; sourceTree = "<group>"; };
 		8C1F35D3266765DE00A3CF7A /* searchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchView.swift; sourceTree = "<group>"; };
 		8CB9B85B2678E36C00F4FBAF /* categoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = categoryView.swift; sourceTree = "<group>"; };
+		B00DBB8D26793E0C0006CC40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B00DBB9126793E2D0006CC40 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		B049CEAE265BDCFF00431616 /* WIT_combine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WIT_combine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B049CEB1265BDCFF00431616 /* WIT_combineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WIT_combineApp.swift; sourceTree = "<group>"; };
 		B049CEB3265BDCFF00431616 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B00DBB9026793E240006CC40 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				B00DBB9126793E2D0006CC40 /* PostView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		B049CEA5265BDCFF00431616 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +170,7 @@
 				B049CEE8265BDEDC00431616 /* Person.swift */,
 				B049CEC8265BDDE700431616 /* News.swift */,
 				B049CEE9265BDEDC00431616 /* UserContent.swift */,
+				B00DBB8D26793E0C0006CC40 /* ImagePicker.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -165,6 +178,7 @@
 		B049CEF2265BE3BB00431616 /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				B00DBB9026793E240006CC40 /* Post */,
 				B0959DED265CF929007ABD5A /* Comments */,
 				B049CEFC265BE5BF00431616 /* Root */,
 				B049CEFA265BE51D00431616 /* PersonContents */,
@@ -322,6 +336,7 @@
 				8CB9B85C2678E36C00F4FBAF /* categoryView.swift in Sources */,
 				B049CEB4265BDCFF00431616 /* ContentView.swift in Sources */,
 				B049CEDE265BDDE800431616 /* logIn.swift in Sources */,
+				B00DBB8E26793E0C0006CC40 /* ImagePicker.swift in Sources */,
 				B0959DEF265CF948007ABD5A /* CommentsView.swift in Sources */,
 				B049CEDD265BDDE800431616 /* MainView.swift in Sources */,
 				1AD3DF85265CE8A200D8C939 /* closetModel.swift in Sources */,
@@ -347,6 +362,7 @@
 				B049CEDC265BDDE800431616 /* PersonHeaderView.swift in Sources */,
 				B049CEEA265BDEDC00431616 /* Comment.swift in Sources */,
 				B0959E00265D0A5F007ABD5A /* CommentsBodyViewModel.swift in Sources */,
+				B00DBB9226793E2D0006CC40 /* PostView.swift in Sources */,
 				B049CED9265BDDE800431616 /* NavView.swift in Sources */,
 				B049CEC2265BDD8300431616 /* CommentsLinkViews.swift in Sources */,
 				B049CED6265BDDE800431616 /* PersonBodyViewModel.swift in Sources */,
