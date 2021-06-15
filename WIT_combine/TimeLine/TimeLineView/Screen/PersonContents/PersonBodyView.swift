@@ -16,23 +16,30 @@ struct PersonBodyView: View {
     var colWidth: CGFloat
     
     var body: some View {
-        LazyVStack(alignment:.leading){
-            ForEach(store.following,id: \.id){ person in
-                PersonHeaderView(person: person)
-                
-                Image(vm.getContentOfOwners(ownerId: person.id)?.image ?? "")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                PersonFooterView(content: vm.getContentOfOwners(ownerId: person.id), colWidth: colWidth)
-                    .padding(.bottom,10)
-                
-            }
-        }
-        .onAppear {
-            //view가 나타날 때 수행할 action을 추가합니다.
-            //파라미터 perform에 들어가는 action은 optional입니다.
-            vm.setContentOfOwners(owners: store.following)
-        }
-        
+ 
+            ScrollView(.vertical, showsIndicators: false, content : {
+                LazyVStack(alignment:.leading){
+                    ForEach(store.following,id: \.id){ person in
+                        PersonHeaderView(person: person)
+                        
+                        Image(vm.getContentOfOwners(ownerId: person.id)?.image ?? "")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                        PersonFooterView(content: vm.getContentOfOwners(ownerId: person.id), colWidth: colWidth)
+                            .padding(.bottom,10)
+                        
+                    }
+                }
+                .onAppear {
+                    //view가 나타날 때 수행할 action을 추가합니다.
+                    //파라미터 perform에 들어가는 action은 optional입니다.
+                    vm.setContentOfOwners(owners: store.following)
+                }
+            })
+    }
+}
+extension View {
+    func getSafeArea() -> UIEdgeInsets {
+        return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top:0,left:0,bottom:0,right:0)
     }
 }
