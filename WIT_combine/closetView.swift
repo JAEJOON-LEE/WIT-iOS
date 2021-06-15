@@ -38,7 +38,7 @@ struct closetView: View {
 //        List(products, id : \.self) {
 //            itemCardView(product : $0)
 //        }
-        NavigationView {
+//        NavigationView {
             ZStack(alignment : .bottomTrailing) {
                 ScrollView {
                     LazyVGrid(columns: [
@@ -52,7 +52,7 @@ struct closetView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
                             }
-                            .navigationBarHidden(true)
+//                            .navigationBarHidden(true)
                         }
                     }
                 } // scrollview
@@ -88,7 +88,7 @@ struct closetView: View {
                 }
             } // ZStack
             
-        } // navigationview
+//        } // navigationview
     }
 }
 

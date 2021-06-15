@@ -14,14 +14,14 @@ struct Home : View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
             HomePage(x: $x)
-            SlideView()
-                .shadow(color: Color.black.opacity(x != 0 ? 0.1 : 0), radius: 5, x:5, y:0)
-                .offset(x:x)
-                .background(Color.black.opacity(x == 0 ? 0.5 : 0).ignoresSafeArea(.all, edges: .vertical).onTapGesture {
-                    withAnimation {
-                        x = -width
-                    }
-                })
+//            SlideView()
+//                .shadow(color: Color.black.opacity(x != 0 ? 0.1 : 0), radius: 5, x:5, y:0)
+//                .offset(x:x)
+//                .background(Color.black.opacity(x == 0 ? 0.5 : 0).ignoresSafeArea(.all, edges: .vertical).onTapGesture {
+//                    withAnimation {
+//                        x = -width
+//                    }
+//                })
         }
         .navigationBarBackButtonHidden(true)
         .gesture(DragGesture().onChanged({ (value) in
@@ -53,30 +53,32 @@ struct Home : View {
 
 struct HomePage : View {
     @Binding var x : CGFloat
-    
     var body: some View {
         GeometryReader { geometry in
             let colWidth = geometry.size.width / 3
 
             TabView {
                 NavigationView{
-                VStack(){
-                    NavView(colWidth: colWidth, x:$x)
-                    TimeLineView(colWidth:colWidth)
-                }
-                .navigationBarHidden(true)
-                }
-                .tabItem {
-                    Image(systemName: "house.fill")
-                }
+                        VStack(){
+                            NavView(colWidth: colWidth, x:$x)
+                            TimeLineView(colWidth:colWidth)
+                        }
+                        .navigationBarHidden(true)
+                    }
+                    .tabItem {
+                        Image(systemName: "house.fill")
+                    }
+                
                 VStack {
                     NavView(colWidth: colWidth, x:$x)
-                    closetView()
+                    NavigationView {
+                        categoryView()
+                    }
                 }
                 .tabItem {
                     Image(systemName: "square.grid.3x3.fill")
                 }
-    
+        
                 VStack(){
                     NavView(colWidth: colWidth, x:$x)
                     searchView()
@@ -98,7 +100,6 @@ struct HomePage : View {
                 .tabItem {
                     Image(systemName: "person")
                 }
-
             }
         }
     }
