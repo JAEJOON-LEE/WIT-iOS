@@ -11,6 +11,7 @@ struct CommentItemView: View {
     var comment: Comment
     var isReply: Bool = false
     var colWidth: CGFloat
+    @Binding var commentTxt: String
     
     var body: some View {
         HStack(alignment: .top, spacing:10){
@@ -29,7 +30,7 @@ struct CommentItemView: View {
                     .stroke(Color.blue,lineWidth: 2))
             }
 //            .frame(width: isReply == false ? colWidth * 2/10 : colWidth * 1.8/10, alignment: .topLeading)
-            TextLikeView(comment:comment , colWidth: colWidth, isReply: isReply)
+            TextLikeView(comment:comment , colWidth: colWidth, isReply: isReply,commentTxt:$commentTxt)
             
         }
     }
@@ -40,12 +41,30 @@ struct  TextLikeView: View {
     var colWidth: CGFloat
     var isReply: Bool
     private var textWidth: CGFloat = 0
+    @StateObject var vm: CommentsBodyViewModel = CommentsBodyViewModel()
+    @Binding var commentTxt: String
+   // @Binding commentTxt: String
     
-    init(comment: Comment, colWidth: CGFloat, isReply: Bool){
+    init(comment: Comment, colWidth: CGFloat, isReply: Bool,commentTxt:Binding<String>){
         self.comment = comment
         self.colWidth = colWidth
         self.isReply = isReply
         self.textWidth = isReply == false ? colWidth * 7/10 : colWidth * 5.6/10
+        _commentTxt = commentTxt
+    }
+//    func replyButton(_ owner: Person) {
+//        self.vm.commentTxt = ""
+//        self.vm.commentTxt += "@"
+//        self.vm.commentTxt += owner.name
+//    }
+    func replyButton(_ owner: Person) -> Button<Text> {
+        Button {
+            self.commentTxt = ""
+            self.commentTxt = "@\(owner.name) "
+        } label: {
+            Text("Reply")
+                .styleTertiary() as! Text
+        }
     }
     
     var body: some View {
@@ -76,12 +95,7 @@ struct  TextLikeView: View {
                         .styleSecondary()
                 }
                 
-                Button {
-                    
-                } label: {
-                    Text("Reply")
-                        .styleTertiary()
-                }
+                replyButton(comment.owner)
             }
             
             
