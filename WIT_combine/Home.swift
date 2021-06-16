@@ -56,13 +56,15 @@ struct HomePage : View {
     var body: some View {
         GeometryReader { geometry in
             let colWidth = geometry.size.width / 3
-
+            
+            VStack {
+            NavView(colWidth: colWidth, x:$x)
             TabView {
-                NavigationView{
+//                NavigationView{
                         VStack(){
-                            NavView(colWidth: colWidth, x:$x)
+//                            NavView(colWidth: colWidth, x:$x)
                             TimeLineView(colWidth:colWidth)
-                        }
+//                        }
                         .navigationBarHidden(true)
                     }
                     .tabItem {
@@ -70,37 +72,23 @@ struct HomePage : View {
                     }
                 
                 VStack {
-                    NavView(colWidth: colWidth, x:$x)
-                    NavigationView {
+//                    NavView(colWidth: colWidth, x:$x)
+//                    NavigationView {
                         categoryView()
-                    }
+//                    }
                 }
                 .tabItem {
                     Image(systemName: "square.grid.3x3.fill")
                 }
-        
                 VStack(){
-                    NavView(colWidth: colWidth, x:$x)
-                    searchView()
-                }
-                .tabItem {
-                    Image(systemName: "text.magnifyingglass")
-                }
-                VStack(){
-                    NavView(colWidth: colWidth, x:$x)
-                    MainView()
-                }
-                .tabItem {
-                    Image(systemName: "heart")
-                }
-                VStack(){
-                    NavView(colWidth: colWidth, x:$x)
-                    ProfileView()
+//                    NavView(colWidth: colWidth, x:$x)
+                    ProfileView().navigationBarHidden(true)
                 }
                 .tabItem {
                     Image(systemName: "person")
                 }
             }
+        }
         }
     }
 }

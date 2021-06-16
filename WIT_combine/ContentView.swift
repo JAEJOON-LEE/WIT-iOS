@@ -1,24 +1,12 @@
 import SwiftUI
-// base page name
-var pageName: String = "Welcome"
-var authC = auth()
+import Firebase
+import FirebaseAuth
 
 struct ContentView: View {
-    var flag: Int = 0
     var body: some View {
-        VStack{
-            Text("Please Log In With Google")
-                .padding()
-            HStack{
-                Button(action: {
-                    authC.gLog()
-                }) {
-                Text("Log In with Google")
-                    .padding()
-            }
-            } // HS
-        
-        }
+        logIn()
+//        Home()
+        //UpdateProfile()
     }
 }
 
@@ -27,3 +15,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

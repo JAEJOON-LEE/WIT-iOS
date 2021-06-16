@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0EF2E0BC9A38713B84BA370C /* Pods_WIT_combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A054895DACB853A2CD7841E2 /* Pods_WIT_combine.framework */; };
+		1A89E1E3267A63D600D08D76 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1E2267A63D600D08D76 /* AuthService.swift */; };
+		1A89E1E5267A63E400D08D76 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1E4267A63E400D08D76 /* Extensions.swift */; };
+		1A89E1E7267A63ED00D08D76 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1E6267A63ED00D08D76 /* File.swift */; };
+		1A89E1E9267A63FA00D08D76 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1E8267A63FA00D08D76 /* PostModel.swift */; };
+		1A89E1EB267A640100D08D76 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1EA267A640100D08D76 /* PostService.swift */; };
+		1A89E1ED267A640800D08D76 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1EC267A640800D08D76 /* StorageService.swift */; };
+		1A89E1EF267A641000D08D76 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A89E1EE267A641000D08D76 /* UserModel.swift */; };
 		1AD3DF84265CE8A200D8C939 /* closetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3DF82265CE8A200D8C939 /* closetView.swift */; };
 		1AD3DF85265CE8A200D8C939 /* closetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AD3DF83265CE8A200D8C939 /* closetModel.swift */; };
 		6DF4D5712679C80F00F292FE /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4D5702679C80F00F292FE /* ProfileView.swift */; };
 		6DF4D5732679DF5400F292FE /* UpdateProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF4D5722679DF5400F292FE /* UpdateProfile.swift */; };
-		8C1F35D4266765DE00A3CF7A /* searchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C1F35D3266765DE00A3CF7A /* searchView.swift */; };
-		8C781D6A267A3DF60071463A /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C781D69267A3DF60071463A /* auth.swift */; };
 		8CB9B85C2678E36C00F4FBAF /* categoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB9B85B2678E36C00F4FBAF /* categoryView.swift */; };
+		9EFBC11DAFEB6313BEC571FF /* Pods_WIT_combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA41F3C2130FB995AF68EBB /* Pods_WIT_combine.framework */; };
 		B00DBB8E26793E0C0006CC40 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00DBB8D26793E0C0006CC40 /* ImagePicker.swift */; };
 		B00DBB9226793E2D0006CC40 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00DBB9126793E2D0006CC40 /* PostView.swift */; };
 		B027FB9F267A1B1F003297CD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B027FB9E267A1B1F003297CD /* GoogleService-Info.plist */; };
@@ -52,15 +57,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01722D4EAAE8236AE0F3315F /* Pods-WIT_combine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WIT_combine.debug.xcconfig"; path = "Target Support Files/Pods-WIT_combine/Pods-WIT_combine.debug.xcconfig"; sourceTree = "<group>"; };
+		1A89E1E2267A63D600D08D76 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		1A89E1E4267A63E400D08D76 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1A89E1E6267A63ED00D08D76 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		1A89E1E8267A63FA00D08D76 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		1A89E1EA267A640100D08D76 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
+		1A89E1EC267A640800D08D76 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
+		1A89E1EE267A641000D08D76 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		1AD3DF82265CE8A200D8C939 /* closetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = closetView.swift; sourceTree = "<group>"; };
 		1AD3DF83265CE8A200D8C939 /* closetModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = closetModel.swift; sourceTree = "<group>"; };
 		6DF4D5702679C80F00F292FE /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		6DF4D5722679DF5400F292FE /* UpdateProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProfile.swift; sourceTree = "<group>"; };
-		8C1F35D3266765DE00A3CF7A /* searchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchView.swift; sourceTree = "<group>"; };
-		8C781D69267A3DF60071463A /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
 		8CB9B85B2678E36C00F4FBAF /* categoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = categoryView.swift; sourceTree = "<group>"; };
-		A054895DACB853A2CD7841E2 /* Pods_WIT_combine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WIT_combine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		AB3AB8B8E8705366DADE395E /* Pods-WIT_combine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WIT_combine.debug.xcconfig"; path = "Target Support Files/Pods-WIT_combine/Pods-WIT_combine.debug.xcconfig"; sourceTree = "<group>"; };
 		B00DBB8D26793E0C0006CC40 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B00DBB9126793E2D0006CC40 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		B027FB9E267A1B1F003297CD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -97,7 +106,8 @@
 		B0959DF8265D09EE007ABD5A /* CommentItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemView.swift; sourceTree = "<group>"; };
 		B0959DFB265D0A1A007ABD5A /* CommentItemAndResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentItemAndResponseView.swift; sourceTree = "<group>"; };
 		B0959DFF265D0A5F007ABD5A /* CommentsBodyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsBodyViewModel.swift; sourceTree = "<group>"; };
-		B81D4CB8AB0799F555B24CCA /* Pods-WIT_combine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WIT_combine.release.xcconfig"; path = "Target Support Files/Pods-WIT_combine/Pods-WIT_combine.release.xcconfig"; sourceTree = "<group>"; };
+		B3AA566BAF020D9872CFBC6F /* Pods-WIT_combine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WIT_combine.release.xcconfig"; path = "Target Support Files/Pods-WIT_combine/Pods-WIT_combine.release.xcconfig"; sourceTree = "<group>"; };
+		BEA41F3C2130FB995AF68EBB /* Pods_WIT_combine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WIT_combine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,33 +115,48 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0EF2E0BC9A38713B84BA370C /* Pods_WIT_combine.framework in Frameworks */,
+				9EFBC11DAFEB6313BEC571FF /* Pods_WIT_combine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101BF19AA96385B5C54DBA66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEA41F3C2130FB995AF68EBB /* Pods_WIT_combine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A89E1E1267A636B00D08D76 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1A89E1E2267A63D600D08D76 /* AuthService.swift */,
+				1A89E1E4267A63E400D08D76 /* Extensions.swift */,
+				1A89E1E6267A63ED00D08D76 /* File.swift */,
+				1A89E1E8267A63FA00D08D76 /* PostModel.swift */,
+				1A89E1EA267A640100D08D76 /* PostService.swift */,
+				1A89E1EC267A640800D08D76 /* StorageService.swift */,
+				1A89E1EE267A641000D08D76 /* UserModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1E4478D228BA436644B1B2B9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AB3AB8B8E8705366DADE395E /* Pods-WIT_combine.debug.xcconfig */,
-				B81D4CB8AB0799F555B24CCA /* Pods-WIT_combine.release.xcconfig */,
+				01722D4EAAE8236AE0F3315F /* Pods-WIT_combine.debug.xcconfig */,
+				B3AA566BAF020D9872CFBC6F /* Pods-WIT_combine.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		7F2103AA1E3129D6D4DC2A1E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A054895DACB853A2CD7841E2 /* Pods_WIT_combine.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B00DBB9026793E240006CC40 /* Post */ = {
 			isa = PBXGroup;
 			children = (
+				1A89E1E1267A636B00D08D76 /* Model */,
 				B00DBB9126793E2D0006CC40 /* PostView.swift */,
 			);
 			path = Post;
@@ -143,7 +168,7 @@
 				B049CEB0265BDCFF00431616 /* WIT_combine */,
 				B049CEAF265BDCFF00431616 /* Products */,
 				1E4478D228BA436644B1B2B9 /* Pods */,
-				7F2103AA1E3129D6D4DC2A1E /* Frameworks */,
+				101BF19AA96385B5C54DBA66 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,12 +196,10 @@
 				1AD3DF83265CE8A200D8C939 /* closetModel.swift */,
 				1AD3DF82265CE8A200D8C939 /* closetView.swift */,
 				8CB9B85B2678E36C00F4FBAF /* categoryView.swift */,
-				8C1F35D3266765DE00A3CF7A /* searchView.swift */,
 				B049CEB5265BDD0100431616 /* Assets.xcassets */,
 				B049CEBA265BDD0100431616 /* Info.plist */,
 				B027FB9E267A1B1F003297CD /* GoogleService-Info.plist */,
 				B049CEB7265BDD0100431616 /* Preview Content */,
-				8C781D69267A3DF60071463A /* auth.swift */,
 			);
 			path = WIT_combine;
 			sourceTree = "<group>";
@@ -307,12 +330,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B049CEBD265BDD0100431616 /* Build configuration list for PBXNativeTarget "WIT_combine" */;
 			buildPhases = (
-				1D575DE01CB10BE372AC2AC6 /* [CP] Check Pods Manifest.lock */,
+				282BB86F7DBD53122A4592D5 /* [CP] Check Pods Manifest.lock */,
 				B049CEAA265BDCFF00431616 /* Sources */,
 				B049CEAB265BDCFF00431616 /* Frameworks */,
 				B049CEAC265BDCFF00431616 /* Resources */,
-				904928438F1C4B439EC3BBE9 /* [CP] Embed Pods Frameworks */,
-				DC8D8EEC1513D53BF0D3989D /* [CP] Copy Pods Resources */,
+				B1D65C2D01E3E7D8375C3BAE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -369,7 +391,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1D575DE01CB10BE372AC2AC6 /* [CP] Check Pods Manifest.lock */ = {
+		282BB86F7DBD53122A4592D5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -391,7 +413,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		904928438F1C4B439EC3BBE9 /* [CP] Embed Pods Frameworks */ = {
+		B1D65C2D01E3E7D8375C3BAE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -408,23 +430,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WIT_combine/Pods-WIT_combine-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DC8D8EEC1513D53BF0D3989D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WIT_combine/Pods-WIT_combine-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-WIT_combine/Pods-WIT_combine-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WIT_combine/Pods-WIT_combine-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -433,37 +438,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CB9B85C2678E36C00F4FBAF /* categoryView.swift in Sources */,
+				1A89E1E9267A63FA00D08D76 /* PostModel.swift in Sources */,
 				B049CEB4265BDCFF00431616 /* ContentView.swift in Sources */,
 				B049CEDE265BDDE800431616 /* logIn.swift in Sources */,
 				B00DBB8E26793E0C0006CC40 /* ImagePicker.swift in Sources */,
 				B0959DEF265CF948007ABD5A /* CommentsView.swift in Sources */,
 				B049CEDD265BDDE800431616 /* MainView.swift in Sources */,
 				1AD3DF85265CE8A200D8C939 /* closetModel.swift in Sources */,
+				1A89E1E5267A63E400D08D76 /* Extensions.swift in Sources */,
 				B049CEEB265BDEDC00431616 /* TextStyle.swift in Sources */,
 				B049CEE3265BDDE800431616 /* TimeLineView.swift in Sources */,
+				1A89E1E7267A63ED00D08D76 /* File.swift in Sources */,
 				B049CED7265BDDE800431616 /* SlideView.swift in Sources */,
+				1A89E1ED267A640800D08D76 /* StorageService.swift in Sources */,
 				B049CEEC265BDEDC00431616 /* ApiService.swift in Sources */,
 				B049CED8265BDDE800431616 /* News.swift in Sources */,
 				B049CEDA265BDDE800431616 /* NewsView.swift in Sources */,
 				B049CEED265BDEDC00431616 /* Person.swift in Sources */,
 				B05B91BD2679105A0098F7B7 /* MiniAddCommentViewModel.swift in Sources */,
-				8C1F35D4266765DE00A3CF7A /* searchView.swift in Sources */,
 				B0959DF9265D09EE007ABD5A /* CommentItemView.swift in Sources */,
 				B049CEE2265BDDE800431616 /* PersonBodyView.swift in Sources */,
 				B049CEE0265BDDE800431616 /* MiniAddCommentView.swift in Sources */,
 				B049CEDB265BDDE800431616 /* FooterActionBarView.swift in Sources */,
 				B0959DF5265D09B0007ABD5A /* CommentsBodyView.swift in Sources */,
+				1A89E1EB267A640100D08D76 /* PostService.swift in Sources */,
 				B049CEE1265BDDE800431616 /* NewsViewModel.swift in Sources */,
 				B049CEB2265BDCFF00431616 /* WIT_combineApp.swift in Sources */,
 				B0959DFC265D0A1A007ABD5A /* CommentItemAndResponseView.swift in Sources */,
 				1AD3DF84265CE8A200D8C939 /* closetView.swift in Sources */,
 				6DF4D5732679DF5400F292FE /* UpdateProfile.swift in Sources */,
 				B049CED4265BDDE800431616 /* Home.swift in Sources */,
-				8C781D6A267A3DF60071463A /* auth.swift in Sources */,
 				B049CEDC265BDDE800431616 /* PersonHeaderView.swift in Sources */,
 				B049CEEA265BDEDC00431616 /* Comment.swift in Sources */,
 				6DF4D5712679C80F00F292FE /* ProfileView.swift in Sources */,
 				B0959E00265D0A5F007ABD5A /* CommentsBodyViewModel.swift in Sources */,
+				1A89E1E3267A63D600D08D76 /* AuthService.swift in Sources */,
+				1A89E1EF267A641000D08D76 /* UserModel.swift in Sources */,
 				B00DBB9226793E2D0006CC40 /* PostView.swift in Sources */,
 				B049CED9265BDDE800431616 /* NavView.swift in Sources */,
 				B049CEC2265BDD8300431616 /* CommentsLinkViews.swift in Sources */,
@@ -594,7 +604,7 @@
 		};
 		B049CEBE265BDD0100431616 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB3AB8B8E8705366DADE395E /* Pods-WIT_combine.debug.xcconfig */;
+			baseConfigurationReference = 01722D4EAAE8236AE0F3315F /* Pods-WIT_combine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -619,7 +629,7 @@
 		};
 		B049CEBF265BDD0100431616 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B81D4CB8AB0799F555B24CCA /* Pods-WIT_combine.release.xcconfig */;
+			baseConfigurationReference = B3AA566BAF020D9872CFBC6F /* Pods-WIT_combine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

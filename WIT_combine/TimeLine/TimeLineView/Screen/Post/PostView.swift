@@ -40,8 +40,16 @@ struct PostView: View {
             self.clear()
             return
         }
-        self.clear()
-        //DB 과정
+        
+        PostService.uploadPost(caption: dscText, imageData: imageData, onSuccess : {
+            self.clear()
+        }){
+            (errorMessage) in
+            self.error = errorMessage
+            self.showingAlert = true
+            return
+        }
+        
     }
     func errorCheck() -> String? {
         if titleText.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty || dscText.trimmingCharacters(in: .whitespaces).isEmpty{
