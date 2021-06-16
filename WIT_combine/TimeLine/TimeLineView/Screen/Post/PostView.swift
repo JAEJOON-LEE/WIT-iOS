@@ -19,7 +19,8 @@ struct PostView: View {
     @State private var error: String = ""
     @State private var showingAlert = false
     @State private var alertTitle: String = "Oh No!!"
-    @State private var text = ""
+    @State private var dscText = ""
+    @State private var titleText = ""
     
     func loadImage(){
         guard let inputImage = pickedImage else{ return}
@@ -27,7 +28,8 @@ struct PostView: View {
         postImage = inputImage
     }
     func clear(){
-        self.text = ""
+        self.titleText = ""
+        self.dscText = ""
         self.imageData = Data()
         self.postImage = Image(systemName: "photo.fill")
     }
@@ -42,7 +44,7 @@ struct PostView: View {
         //DB 과정
     }
     func errorCheck() -> String? {
-        if text.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty{
+        if titleText.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty || dscText.trimmingCharacters(in: .whitespaces).isEmpty{
             return "please add a caption and provide an image"
         }
         return nil
@@ -50,26 +52,41 @@ struct PostView: View {
     
     var body: some View {
         VStack{
-            Text("Upload A Post").font(.largeTitle)
+            Text("New Post").font(.largeTitle)
             
             VStack{
                 if postImage != nil {
                     postImage!.resizable()
-                        .frame(width: 300, height: 200)
+                        .frame(width: 340, height: 250)
                         .onTapGesture {
                             self.showingActionSheet = true
                         }
                 } else{
                     Image(systemName: "photo.fill").resizable()
-                        .frame(width: 300, height: 200)
+                        .frame(width: 340, height: 250)
                         .onTapGesture {
                             self.showingActionSheet = true
                         }
                 }
             }
+            HStack{
+                Text("#Title")
+                Spacer()
+            }
+            .padding()
+            TextEditor(text: $titleText)
+                .frame(height: 30)
+                .padding(4)
+                .background(RoundedRectangle(cornerRadius: 8).stroke(Color.blue))
+                .padding(.horizontal)
             
-            TextEditor(text: $text)
-                .frame(height: 200)
+            HStack{
+                Text("#Description")
+                Spacer()
+            }
+            .padding()
+            TextEditor(text: $dscText)
+                .frame(height: 60)
                 .padding(4)
                 .background(RoundedRectangle(cornerRadius: 8).stroke(Color.blue))
                 .padding(.horizontal)
@@ -78,6 +95,8 @@ struct PostView: View {
             }.alert(isPresented: $showingAlert) {
                 Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
             }
+            .padding(.bottom,20)
+            .padding(.top,5)
                 
         }.padding()
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
