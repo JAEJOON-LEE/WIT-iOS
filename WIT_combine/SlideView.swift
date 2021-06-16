@@ -33,21 +33,6 @@ struct SlideView : View {
                         Text("@twoj")
                             .foregroundColor(.gray)
                         
-                        HStack(spacing: 20){
-                            FollowView(count:8, title: "Following")
-                                .font(.footnote)
-                                .onTapGesture {
-                                    //뭐든
-                                }
-                            
-                            FollowView(count:108, title: "Following")
-                                .font(.footnote)
-                                .onTapGesture {
-                                    //아무튼만듬
-                                }
-                        }
-                        .padding(.top, 10)
-                        
                         Divider()
                             .padding(.top, 10)
                     }
@@ -136,14 +121,8 @@ struct SlideView : View {
                 VStack(alignment: .leading){
                     
                     Button(action: {}){
-                        Text("~~~~~")
-                            .foregroundColor(Color.blue)
-                    }
-                    .padding(.bottom)
-                    
-                    Button(action: {}){
-                        Text("~~~~~")
-                            .foregroundColor(Color.blue)
+                        Text("Log out")
+                            .foregroundColor(Color.black)
                     }
                     
                     Spacer(minLength: 0)
@@ -179,7 +158,7 @@ struct FollowView : View {
     }
 }
 
-var menuButtons = ["Timeline", "Closet", "Search", "이건뭐?", "Profile"]
+var menuButtons = ["Timeline", "Closet", "Profile"]
 
 struct MenuButton : View {
     var title : String
