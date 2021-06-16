@@ -14,14 +14,14 @@ struct Home : View {
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .leading, vertical: .center)){
             HomePage(x: $x)
-//            SlideView()
-//                .shadow(color: Color.black.opacity(x != 0 ? 0.1 : 0), radius: 5, x:5, y:0)
-//                .offset(x:x)
-//                .background(Color.black.opacity(x == 0 ? 0.5 : 0).ignoresSafeArea(.all, edges: .vertical).onTapGesture {
-//                    withAnimation {
-//                        x = -width
-//                    }
-//                })
+            SlideView()
+                .shadow(color: Color.black.opacity(x != 0 ? 0.1 : 0), radius: 5, x:5, y:0)
+                .offset(x:x)
+                .background(Color.black.opacity(x == 0 ? 0.5 : 0).ignoresSafeArea(.all, edges: .vertical).onTapGesture {
+                    withAnimation {
+                        x = -width
+                    }
+                })
         }
         .navigationBarBackButtonHidden(true)
         .gesture(DragGesture().onChanged({ (value) in
@@ -95,7 +95,7 @@ struct HomePage : View {
                 }
                 VStack(){
                     NavView(colWidth: colWidth, x:$x)
-                    MainView()
+                    ProfileView()
                 }
                 .tabItem {
                     Image(systemName: "person")

@@ -81,26 +81,26 @@ struct SlideView : View {
                     Button(action: {
                         
                     }){
-                        MenuButton(title: "MoApp2 Team9")
+                        MenuButton(title: "Log out")
                     }
                     
                     Divider()
                     
-                    Button(action: {
-                        
-                    }){
-                        Text("내 이름은")
-                            .foregroundColor(.black)
-                    }
-                    .padding(.top)
-                    
-                    Button(action: {
-                        
-                    }){
-                        Text("이재준")
-                            .foregroundColor(.black)
-                    }
-                    .padding(.top, 20)
+//                    Button(action: {
+//
+//                    }){
+//                        Text("내 이름은")
+//                            .foregroundColor(.black)
+//                    }
+//                    .padding(.top)
+//
+//                    Button(action: {
+//
+//                    }){
+//                        Text("이재준")
+//                            .foregroundColor(.black)
+//                    }
+//                    .padding(.top, 20)
                     
                     Spacer(minLength: 0)
                     
@@ -108,23 +108,26 @@ struct SlideView : View {
                         .padding(.bottom)
                     
                     HStack {
-                        Button(action:{}){
-                            Image(systemName: "applelogo")
-                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                                .resizable()
-                                .frame(width: 26, height: 26)
-                                .foregroundColor(Color.black)
+//                        Button(action:{}){
+//                            Image(systemName: "applelogo")
+//                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+//                                .resizable()
+//                                .frame(width: 26, height: 26)
+//                                .foregroundColor(Color.black)
+//                        }
+                        Spacer()
+                        VStack{
+                            Text("copyrightⓒ")
+                            Text("2021 All rights reserved by WIT")
                         }
                         Spacer()
-                        Text("2021SPRING MOAPP2")
-                        Spacer()
-                        Button(action:{}){
-                            Image(systemName: "barcode")
-                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-                                .resizable()
-                                .frame(width: 26, height: 26)
-                                .foregroundColor(Color.black)
-                        }
+//                        Button(action:{}){
+//                            Image(systemName: "barcode")
+//                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+//                                .resizable()
+//                                .frame(width: 26, height: 26)
+//                                .foregroundColor(Color.black)
+//                        }
                     }
                 }
                 .opacity(show ? 1: 0)
@@ -176,7 +179,7 @@ struct FollowView : View {
     }
 }
 
-var menuButtons = ["1", "2", "3", "4", "5"]
+var menuButtons = ["Timeline", "Closet", "Search", "이건뭐?", "Profile"]
 
 struct MenuButton : View {
     var title : String

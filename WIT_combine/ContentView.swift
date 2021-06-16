@@ -4,6 +4,7 @@ struct ContentView: View {
     var body: some View {
         //logIn()
         Home()
+        //UpdateProfile()
     }
 }
 
