@@ -121,6 +121,41 @@ struct Login : View {
     @Binding var index : Int
     @State var id = ""
     @State var password = ""
+    @State private var error: String = ""
+    @State private var showingAlert = false
+    @State private var alertTitle: String = "Oh No!!"
+    
+    func clear(){
+        self.password = ""
+        self.id = ""
+    }
+    func errorCheck() -> String? {
+        if id.trimmingCharacters(in: .whitespaces).isEmpty || password.trimmingCharacters(in: .whitespaces).isEmpty
+        {
+            return "Check your fill"
+        }
+        return nil
+        
+    }
+    func signIn() {
+        if let error = errorCheck(){
+            self.error = error
+            self.showingAlert=true
+            return
+        }
+        AuthService.signIn(email: id, password: password, onSuccess: {
+            (user) in
+            print("ok")
+            self.clear()
+            index=2
+        }){
+            (errorMessage) in
+            print("error")
+            self.error = errorMessage
+            self.showingAlert = true
+            return
+        }
+    }
 
     var body: some View{
         VStack{
@@ -198,19 +233,7 @@ struct Login : View {
 
             // Login Button....
 
-            Button(action: {
-                Auth.auth().signIn(withEmail: id, password: password)
-                { (user, error) in
-                           if user !=  nil{
-                               print("login success")
-                               index = 2
-                           }
-                           else{
-                               print("login failed")
-                           }
-                       }
-            }) {
-
+            Button(action: signIn) {
 //                NavigationLink(){
                 Text("Login")
                     .font(.system(size: 20))
@@ -226,7 +249,9 @@ struct Login : View {
 //                }
                 .cornerRadius(8)
             }
-            
+            .alert(isPresented: $showingAlert) {
+                Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
+            }
             .padding(.horizontal,25)
             .padding(.top,25)
             // Social Buttons...
@@ -273,22 +298,84 @@ struct SignUp : View {
     @Binding var index : Int
     @State var id = ""
     @State var password = ""
-    @State var password2 = ""
-    @State var age = ""
-    @State var gender = ""
-    var genders = ["Man", "Woman"]
-
+    @State var username = ""
+    @State private var postImage: Image?
+    @State private var pickedImage: Image?
+    @State private var showingActionSheet = false
+    @State private var showingImagePicker = false
+    @State private var imageData: Data = Data()
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var error: String = ""
+    @State private var showingAlert = false
+    @State private var alertTitle: String = "Oh No!!"
+    @State private var dscText = ""
+    @State private var titleText = ""
+    
+    func loadImage(){
+        guard let inputImage = pickedImage else{ return}
+        
+        postImage = inputImage
+    }
+    func clear(){
+        self.password = ""
+        self.id = ""
+        self.username = ""
+    }
+    func errorCheck() -> String? {
+        if id.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty || password.trimmingCharacters(in: .whitespaces).isEmpty || username.trimmingCharacters(in: .whitespaces).isEmpty
+        {
+            return "Check your fill"
+        }
+        return nil
+    }
+    func signUp() {
+        if let error = errorCheck(){
+            self.error = error
+            self.showingAlert=true
+            return
+        }
+        AuthService.signUp(username: username, email: id, password: password, imageData: imageData, onSuccess: {
+            (user) in
+            print("ok")
+            self.clear()
+        }){
+            (errorMessage) in
+            print("error")
+            self.error = errorMessage
+            self.showingAlert = true
+            return
+        }
+    }
+    
     var body: some View{
 
         VStack{
 
             HStack{
 
-                VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 12) {
 
                     Text("Create Account")
                         .font(.title)
                         .fontWeight(.bold)
+                    Spacer()
+                    VStack{
+                        if postImage != nil {
+                            postImage!.resizable()
+                                .frame(width: 100, height: 100)
+                                .onTapGesture {
+                                    self.showingActionSheet = true
+                                }
+                        } else{
+                            Image(systemName: "photo.fill").resizable()
+                                .frame(width: 100, height: 100)
+                                .onTapGesture {
+                                    self.showingActionSheet = true
+                                }
+                                
+                        }
+                    }
+                    
                 }
                 Spacer(minLength: 0)
         }
@@ -325,85 +412,39 @@ struct SignUp : View {
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
 
 
-            Text("Password Verification")
+            
+            Text("Username")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            TextField("type password again", text: $password2)
+            TextField("please type your first name", text: $username)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
                             // shadow effect...
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
-
-            GeometryReader { geometry in
-            HStack {
-                VStack{
-                    Text("Age")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.black)
-
-                    TextField("Age", text: $age)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(5)
-                                    // shadow effect...
-                        .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
-                        .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
-                }
-                .frame(maxWidth: geometry.size.width / 2)
-
-//                VStack {
-//                    Text("Gender")
-//                        .font(.caption)
-//                        .fontWeight(.bold)
-//                        .foregroundColor(.black)
-//
-//                    Picker(selection: $gender, label: Text("Gender")) {
-//                                    ForEach(0 ..< genders.count) {
-//                                        Text(self.genders[$0])
-//                        }
-//                    }
-//                }
-                VStack{
-                    Text("Gender")
-                        .font(.caption)
-                        .fontWeight(.bold)
-                        .foregroundColor(.black)
-
-                    TextField("Man or Woman", text: $gender)
-                        .padding()
-                        .background(Color.white)
-                        .cornerRadius(5)
-                                    // shadow effect...
-                        .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
-                        .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
-                }
-                .frame(maxWidth: geometry.size.width / 2)
-
-            }
-            }
         }
-            .padding(.horizontal,25)
-            .padding(.top,25)
+        .padding()
+        .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
+            ImagePicker(pickedImage: self.$pickedImage, showingImagePicker: self.$showingImagePicker, imageData:self.$imageData)
+        }.actionSheet(isPresented: $showingActionSheet){
+            ActionSheet(title: Text(""),buttons: [
+                .default(Text("Choose")){
+                    self.sourceType = .photoLibrary
+                    self.showingImagePicker = true
+                },
+                .default(Text("Take a Photo")){
+                    self.sourceType = .camera
+                    self.showingImagePicker = true
+                }, .cancel()
+            ])
+        }
 
         // Login Button....
 
-        Button(action: {
-            Auth.auth().createUser(withEmail: id, password: password)
-            { (user, error) in
-                       if user !=  nil{
-                           print("register success")
-                            index = 0
-                       }
-                       else{
-                           print("register failed")
-                       }
-                   }
-        }) {
+        Button(action:signUp) {
             Text("Sign Up")
                 .font(.system(size: 20))
                 .foregroundColor(.white)
@@ -414,33 +455,14 @@ struct SignUp : View {
                     LinearGradient(gradient: .init(colors: [Color.black, Color.gray]),
                                     startPoint: .topLeading, endPoint: .bottomTrailing))
                     .cornerRadius(8)
+        }.alert(isPresented: $showingAlert) {
+            Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
         }
         .padding(.horizontal,25)
         .padding(.top,25)
 
         // Social Buttons...
 
-        Button(action: {}) {
-
-            HStack(spacing: 25){
-
-                Image(systemName: "message.fill")
-                    .font(.system(size: 26))
-                    .foregroundColor(Color.black)
-
-                Text("SignUp using KakaoTalk")
-                    .font(.system(size: 18))
-                    .fontWeight(.bold)
-                .fontWeight(.bold)
-                    .foregroundColor(Color.black)
-
-                Spacer(minLength: 0)
-            }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
-
-        }
-        .padding(.horizontal,25)
         }
     }
 }
