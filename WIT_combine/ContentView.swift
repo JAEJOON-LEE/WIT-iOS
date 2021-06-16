@@ -10,7 +10,8 @@ struct ContentView: View {
     }
     
     var body: some View {
-        Group{
+//        Group{
+        NavigationView {
             if(session.session != nil){
                 Home()
             } else {
