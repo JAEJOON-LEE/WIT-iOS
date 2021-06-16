@@ -7,12 +7,14 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import Firebase
+import FirebaseDatabase
 
 struct logIn : View {
 
     @State var index = 0
     @Namespace var name
-
     var body: some View{
         VStack{
 

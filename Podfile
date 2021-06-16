@@ -9,6 +9,10 @@ target 'WIT_combine' do
  pod 'Firebase/Auth'
  pod 'Firebase/Storage'
  pod 'Firebase/Firestore'
+ pod 'FirebaseUI'
+ pod 'FirebaseUI/Google'
  pod 'FirebaseUI/Storage'
+ pod 'FirebaseUI/Phone'
  pod 'URLImage'
+ pod 'FirebaseAuth'
 end
