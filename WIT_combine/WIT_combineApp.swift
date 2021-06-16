@@ -9,7 +9,7 @@ struct WITApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(Store()) //필수이다.
+                .environmentObject(SessionStore()) //필수이다.
         }
     }
 }

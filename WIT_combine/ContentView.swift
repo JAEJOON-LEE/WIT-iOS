@@ -3,16 +3,22 @@ import Firebase
 import FirebaseAuth
 
 struct ContentView: View {
+    @EnvironmentObject var session: SessionStore
+    
+    func listen(){
+        session.listen()
+    }
+    
     var body: some View {
-        logIn()
-//        Home()
-        //UpdateProfile()
+        Group{
+            if(session.session != nil){
+                Home()
+            } else {
+                logIn()
+            }
+        }.onAppear(perform: listen)
+        
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
 

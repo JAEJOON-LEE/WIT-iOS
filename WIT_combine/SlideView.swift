@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SlideView : View {
     
+    @EnvironmentObject var session : SessionStore
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var show = true
     
@@ -63,10 +64,8 @@ struct SlideView : View {
                     Divider()
                         .padding(.top)
                     
-                    Button(action: {
-                        
-                    }){
-                        MenuButton(title: "Log out")
+                    Button(action: session.logout){
+                        Text("Log Out").foregroundColor(Color.black)
                     }
                     
                     Divider()
