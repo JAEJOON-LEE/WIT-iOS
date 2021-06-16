@@ -302,6 +302,7 @@ struct SignUp : View {
         self.password = ""
         self.id = ""
         self.username = ""
+        self.postImage = Image(systemName: "photo.fill")
     }
     func errorCheck() -> String? {
         if id.trimmingCharacters(in: .whitespaces).isEmpty || imageData.isEmpty || password.trimmingCharacters(in: .whitespaces).isEmpty || username.trimmingCharacters(in: .whitespaces).isEmpty
