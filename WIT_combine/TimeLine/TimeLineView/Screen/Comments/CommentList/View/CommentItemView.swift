@@ -52,11 +52,6 @@ struct  TextLikeView: View {
         self.textWidth = isReply == false ? colWidth * 7/10 : colWidth * 5.6/10
         _commentTxt = commentTxt
     }
-//    func replyButton(_ owner: Person) {
-//        self.vm.commentTxt = ""
-//        self.vm.commentTxt += "@"
-//        self.vm.commentTxt += owner.name
-//    }
     func replyButton(_ owner: Person) -> Button<Text> {
         Button {
             self.commentTxt = ""

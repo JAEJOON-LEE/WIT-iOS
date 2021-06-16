@@ -69,11 +69,12 @@ struct PostView: View {
                         }
                 }
             }
+            .padding(.bottom)
             HStack{
                 Text("#Title")
                 Spacer()
             }
-            .padding()
+            .padding(.leading)
             TextEditor(text: $titleText)
                 .frame(height: 30)
                 .padding(4)
@@ -84,7 +85,7 @@ struct PostView: View {
                 Text("#Description")
                 Spacer()
             }
-            .padding()
+            .padding(.leading)
             TextEditor(text: $dscText)
                 .frame(height: 60)
                 .padding(4)
