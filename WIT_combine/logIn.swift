@@ -14,104 +14,86 @@ import SwiftUI
 
 struct logIn : View {
 
-    @State var index = 0
+    @State var index = -1
     @Namespace var name
 
     var body: some View{
         NavigationView {
-        VStack{
-            Text("WIT")
-                .font(.system(size : 30))
-                .fontWeight(.bold)
-                .foregroundColor(.blue)
-                .frame(width: 70)
+            VStack{
+                if (index == -1 || index == 1) {
+                    Text("WIT")
+                        .font(.system(size : 30))
+                        .fontWeight(.bold)
+                        .foregroundColor(.blue)
+                        .frame(width: 70)
+                    HStack(spacing: 0){
+                        Button(action: {
+                            withAnimation(.spring()){ index = -1 }
+                        }) {
+                            VStack{
+                                Text("Login")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(index == -1 ? .black : .gray)
+                                ZStack{
+                                    // slide animation....
+                                    Capsule()
+                                    .fill(Color.black.opacity(0.04))
+                                    .frame( height: 4)
 
-            HStack(spacing: 0){
+                                    if index == -1 {
+                                        Capsule()
+                                            .fill(Color.black)
+                                            .frame( height: 4)
+                                            .matchedGeometryEffect(id: "Tab", in: name)
+                                    }
+                                } // ZStack
+                            } // VStack
+                        } // Button
 
-                Button(action: {
+                        Button(action: {
+                            withAnimation(.spring()){ index = 1 }
+                        }) {
+                            VStack{
+                                Text("Sign Up")
+                                    .font(.system(size: 20))
+                                    .fontWeight(.bold)
+                                    .foregroundColor(index == 1 ? .black : .gray)
 
-                    withAnimation(.spring()){
+                                ZStack{
+                                    // slide animation....
+                                    Capsule()
+                                        .fill(Color.black.opacity(0.04))
+                                        .frame( height: 4)
+                                    if index == 1 {
+                                        Capsule()
+                                            .fill(Color.black)
+                                            .frame( height: 4)
+                                            .matchedGeometryEffect(id: "Tab", in: name)
+                                    }
+                                } // Z
+                            } // B
+                        } // Button
+                    } // HStack
+                    .padding(.top,30)
+                } // if
+                
+                // Login View...
 
-                        index = 0
-                    }
+                // Changing Views Based On Index...
 
-                }) {
-
-                    VStack{
-
-                        Text("Login")
-                            .font(.system(size: 20))
-                            .fontWeight(.bold)
-                            .foregroundColor(index == 0 ? .black : .gray)
-
-                            ZStack{
-
-                            // slide animation....
-                            Capsule()
-                            .fill(Color.black.opacity(0.04))
-                            .frame( height: 4)
-
-                            if index == 0{
-
-                            Capsule()
-                                .fill(Color.black)
-                            .frame( height: 4)
-                                .matchedGeometryEffect(id: "Tab", in: name)
-                            }
-                        }
-                    }
+                if index == -1{
+                    Login(index:$index)
+                        .navigationBarHidden(true)
                 }
-
-                Button(action: {
-
-                    withAnimation(.spring()){
-
-                        index = 1
-                    }
-
-                }) {
-
-                    VStack{
-
-                        Text("Sign Up")
-                            .font(.system(size: 20))
-                            .fontWeight(.bold)
-                            .foregroundColor(index == 1 ? .black : .gray)
-
-                            ZStack{
-
-                            // slide animation....
-                            Capsule()
-                            .fill(Color.black.opacity(0.04))
-                            .frame( height: 4)
-
-                            if index == 1{
-
-                            Capsule()
-                                .fill(Color.black)
-                            .frame( height: 4)
-                                .matchedGeometryEffect(id: "Tab", in: name)
-                            }
-                        }
-                    }
+                else if index == 1{
+                    SignUp(index:$index)
+                        .navigationBarHidden(true)
+                }
+                else{
+                    Home()
                 }
             }
-            .padding(.top,30)
-
-            // Login View...
-
-            // Changing Views Based On Index...
-
-            if index == 0{
-                Login(index:$index)
-            }
-            else if index == 1{
-                SignUp(index:$index)
-            }
-            else{
-                Home()
-            }
-        }
         } // navigationview
     }
 }
