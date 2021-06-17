@@ -77,7 +77,7 @@ struct closetView: View {
 }
 
 struct itemInfo : View {
-    let product: Product
+    @State var product: Product
     @State var isClicked : Bool = false
     @State private var scaleValue = CGFloat(1)
     @State private var heartBtnColor : Color = Color.white
@@ -142,16 +142,12 @@ struct itemInfo : View {
                         Spacer()
                         HStack {
                             Button(action: {
-                                if (heartBtnColor == Color.white) {
-                                    heartBtnColor = Color.red
-                                } else {
-                                    heartBtnColor = Color.white
-                                }
+                                product.isBookmarked.toggle()
                             }, label: {
                                 Image(systemName: "suit.heart.fill")
                                     .font(.system(size : 30))
                                     .frame(width : 70, height : 70)
-                                    .foregroundColor(heartBtnColor)
+                                    .foregroundColor(product.isBookmarked ? Color.red : Color.white)
                                     .background(Color.secondary)
                                     .cornerRadius(15)
                             })
@@ -246,11 +242,5 @@ struct recommendItemView : View {
             }
         }
         return recommendClothes
-    }
-}
-
-struct itemInfo_Previews: PreviewProvider {
-    static var previews: some View {
-        itemInfo(product: Product(name: "CREW NECK RIB KNIT SWEATER_BROWN", cate: "upper", subCate: "short", image : "product2", brand: "BLOND9", price: 30000))
     }
 }

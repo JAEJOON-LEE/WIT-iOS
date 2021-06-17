@@ -70,7 +70,7 @@ struct NewProfile : View {
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            TextField("Password to be changed", text: $password)
+            SecureField("Password to be changed", text: $password)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -78,7 +78,7 @@ struct NewProfile : View {
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
 
-            TextField("Type password again", text: $password2)
+            SecureField("Type password again", text: $password2)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)

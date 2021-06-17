@@ -22,13 +22,13 @@ struct PersonBodyView: View {
     var body: some View {
  
             ScrollView{
-                ForEach(self.profileService.posts, id:\.postId){
+                ForEach(self.profileService.allPosts, id:\.postId){
                     (post) in
                     PostCardImage(post:post)
                 }
             }
             .onAppear{
-                self.profileService.loadUserPosts(userId: Auth.auth().currentUser!.uid)
+                self.profileService.loadAllPosts()
             }
     }
 }

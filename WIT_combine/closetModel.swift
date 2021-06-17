@@ -15,6 +15,7 @@ struct Product : Hashable {
     var brand : String
     var price : Int
     var avgColor : Color
+    var isBookmarked : Bool = false
     
     init(name : String, cate: String, subCate: String, image : String, brand : String, price : Int) {
         self.name = name

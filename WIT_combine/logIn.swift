@@ -341,15 +341,13 @@ struct SignUp : View {
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            SecureField("password", text: $password)
+            SecureField("Password", text: $password)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
-                            // shadow effect...
+                // shadow effect...
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
-
-
             
             Text("Username")
                 .font(.caption)
