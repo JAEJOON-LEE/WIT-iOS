@@ -11,4 +11,4 @@ WIT provides the function that recommend your daily look using color recommendat
 ### Contributors : 
 Jaejoon Lee, Seungmin Lee, Juyeong Jung, Gyurim Park (all students belong to KNU)
 
-<img width="473" alt="WIT_1" src="https://user-images.githubusercontent.com/45229285/122471424-3ef5c580-cffa-11eb-9bcd-a8d2f67d0e8e.png">
+![WIT_README 001](https://user-images.githubusercontent.com/45229285/122474323-0526be00-cffe-11eb-8995-8505283fed2d.jpeg)
