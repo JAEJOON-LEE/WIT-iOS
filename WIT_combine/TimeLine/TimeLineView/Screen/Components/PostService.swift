@@ -59,6 +59,22 @@ class PostService {
             
         }
     }
+    static func loadPost(postId : String, onSucess: @escaping(_ post: PostModel)->Void){
+        
+        PostService.AllPosts.document(postId).getDocument{
+            (snapshot,error) in
+            
+            guard let snap = snapshot else{
+                print("error")
+                return
+            }
+            
+            let dict = snap.data()
+            
+            guard let decoded = try? PostModel.init(fromDictionary: dict!) else{
+                return
+            }
+            onSucess(decoded)
+        }
+    }
 }
-
-

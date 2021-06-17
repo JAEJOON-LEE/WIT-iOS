@@ -8,37 +8,61 @@
 import SwiftUI
 
 struct MiniAddCommentView: View {
+
+    @ObservedObject var commentService = CommentService()
+    @State private var text: String = ""
     
-    @StateObject var vm: MiniAddCommentViewModel = MiniAddCommentViewModel()
-    let placeholder = "Add a comment"
+    init(post: PostModel?, postId: String?){
+        if post != nil {
+            commentService.post = post
+        } else {
+            handleInput(postId: postId!)
+        }
+    }
+    
+    func handleInput(postId: String){
+        PostService.loadPost(postId: postId){
+            (post) in
+            self.commentService.post = post
+        }
+    }
+    func sendComment(){
+        if !text.isEmpty {
+            commentService.addComment(comment: text){
+                self.text = ""
+            }
+        }
+    }
+    
+    
+    let placeholder = " Add a comment"
     
     func emojiButton(_ emoji: String) -> Button<Text> {
         Button{
-            self.vm.commentTxt += emoji
+            self.text += emoji
         } label: {
             Text(emoji)
         }
     }
+    
     var body: some View {
-        ZStack{
+//        ZStack{
+        Section {
             HStack(spacing:10){
-                TextField(placeholder, text: $vm.commentTxt)
-                    .frame(width : UIScreen.main.bounds.width * 0.8, height:25)
-                        .overlay(RoundedRectangle(cornerRadius: 5)
-                                .stroke(Color.gray,lineWidth: 0.1))
+                TextField(placeholder, text: $text)
+                    .frame(width : UIScreen.main.bounds.width * 0.7, height:40)
+                    .overlay(RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.gray,lineWidth: 0.5)
+                    )
                 emojiButton("❤️")
-                Button {
-                    self.vm.commentTxt = ""
-                
-                } label : {
+                Button(action:sendComment){
                     Image(systemName: "plus.circle")
                         .frame(width: 20)
-                        .padding(.trailing,65)
                         .foregroundColor(.black)
                 }
+//            }
+//            .padding(.leading,50)
             }
-            .padding(.leading,5)
-        }
+        }//.background(Color.secondary)
     }
 }
-

@@ -73,13 +73,12 @@ struct PostCard: View {
                 Spacer()
             }
             
-            HStack{
-                Text("View Comments")
-                    .styleTertiary()
-                    .font(.caption)
-                Spacer()
-            }
-            MiniAddCommentView()
+            NavigationLink(destination: CommentView(post: self.postCardService.post)){
+                                Text("View Comments")
+                                    .styleTertiary()
+                                    .font(.caption)
+                                }
+//            MiniAddCommentView()
         }.padding(.horizontal, 10)
     } // body
 }

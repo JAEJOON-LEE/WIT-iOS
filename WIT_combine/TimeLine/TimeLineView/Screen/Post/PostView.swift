@@ -31,7 +31,7 @@ struct PostView: View {
         self.titleText = ""
         self.dscText = ""
         self.imageData = Data()
-        self.postImage = Image(systemName: "photo.fill")
+        self.postImage = nil//Image(systemName: "photo.fill")
     }
     func uploadPost(){
         if let error = errorCheck(){
@@ -85,6 +85,7 @@ struct PostView: View {
                 Text("Create New Post")
                     .foregroundColor(.white)
                     .font(.largeTitle)
+                    .bold()
                     .padding()
                 
                 VStack(alignment : .leading) {
