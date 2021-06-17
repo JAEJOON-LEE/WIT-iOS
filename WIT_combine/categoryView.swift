@@ -28,35 +28,32 @@ struct categoryView: View {
     
     
     var body: some View {
-//        NavigationView{
-            GeometryReader{ proxy in
-                TabView(selection: $currentIndex) {
-                    ForEach(0..<numberOfCate){ num in
-                        NavigationLink(
-                            destination: closetView(),
-                            label: {
-                                Image("\(num)")
-                                    .resizable()
-                                    .overlay(Color.black.opacity(0.2))
-                                    .scaledToFit()
-//                                        .scaledToFill()
-                                    .tag(num)
-                                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,maxHeight: .infinity)
-                                    .aspectRatio(contentMode: .fit)
-                                    .cornerRadius(10.0)
-                            })
-                    }
+        GeometryReader{ proxy in
+            TabView(selection: $currentIndex) {
+                ForEach(0..<numberOfCate){ num in
+                    NavigationLink(
+                        destination: closetView(),
+                        label: {
+                            Image("\(num)")
+                                .resizable()
+                                .overlay(Color.black.opacity(0.2))
+                                .scaledToFit()
+                                .tag(num)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0,maxHeight: .infinity)
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(10.0)
+                        })
                 }
-                .shadow(radius: 10)
-                .tabViewStyle(PageTabViewStyle())
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                //.frame(width: proxy.size.width, height: proxy.size.height)
-                .onReceive(timer, perform: { _ in
-                    next()
-                })
-                .padding(.vertical, 20)
-            }//Geometry view
-//        }//navi view
+            }
+            .shadow(radius: 10)
+            .tabViewStyle(PageTabViewStyle())
+            .clipShape(RoundedRectangle(cornerRadius: 5))
+            //.frame(width: proxy.size.width, height: proxy.size.height)
+            .onReceive(timer, perform: { _ in
+                next()
+            })
+            .padding(.vertical, 20)
+        }//Geometry view
         .navigationBarHidden(true)
     }
 }

@@ -13,6 +13,7 @@ struct ProfileView : View {
     @State var userId = "UserID"
     @State var comment = "정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 "
     var body : some View{
+        VStack {
         Image("person1") //프로필사진
             .resizable()
             .scaledToFit()
@@ -105,6 +106,7 @@ struct ProfileView : View {
             }
         }
         .padding()
+        }
     }
 }
 

@@ -13,7 +13,7 @@ struct TimeLineView: View {
     @State var tag:Int? = nil
     var body: some View {
         ZStack(alignment : .bottomTrailing) {
-            NavigationLink(destination: PostView(), tag: 1, selection: self.$tag ) {
+            NavigationLink(destination: PostView().navigationBarTitle(Text("New Post"), displayMode: .inline), tag: 1, selection: self.$tag ) {
                  EmptyView()
                }
             VStack{
@@ -35,15 +35,14 @@ struct TimeLineView: View {
             Button {
                 self.tag = 1
             } label : {
-                Image(systemName: "camera.circle.fill")
-                    .frame(width: 25, height: 25)
+                Image(systemName: "plus")
+                    .frame(width: 30, height: 30)
                     .font(.system(size : 45))
                     .foregroundColor(.white)
                     .padding()
-                    .background(Color.blue)
+                    .background(Color.secondary)
                     .clipShape(Circle())
-                    .padding(8)
-                    .padding(.bottom,40)
+                    .padding()
             }
         }
     }

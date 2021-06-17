@@ -31,7 +31,7 @@ struct NavView: View {
             Text("WIT")
                 .font(.system(size : 30))
                 .fontWeight(.bold)
-                .foregroundColor(.blue)
+                .foregroundColor(.secondary)
         }
         
         .padding()

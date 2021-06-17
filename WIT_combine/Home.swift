@@ -52,47 +52,93 @@ struct Home : View {
 
 
 struct HomePage : View {
+    @State var tabIndex : Int = 1
+    @State var largerScale : CGFloat = 1.4
+
     @Binding var x : CGFloat
+    
+    var bgColor : Color = .gray
+    
+    
+    func CirclePosition(tabIndex : Int, geometry : GeometryProxy) -> CGFloat {
+        switch tabIndex {
+        case 1 :
+            return -(geometry.size.width / 3)
+        case 2 :
+            return 0
+        case 3 :
+            return geometry.size.width / 3
+        default:
+            return 0
+        }
+    }
     var body: some View {
         GeometryReader { geometry in
             let colWidth = geometry.size.width / 3
             
             VStack {
-            NavView(colWidth: colWidth, x:$x)
-            TabView {
-//                NavigationView{
-                        VStack(){
-//                            NavView(colWidth: colWidth, x:$x)
-                            TimeLineView(colWidth:colWidth)
-//                        }
-                        .navigationBarHidden(true)
+                NavView(colWidth: colWidth, x:$x)
+                ZStack(alignment : .bottom) {
+                    switch (tabIndex) {
+                    case 1 : TimeLineView(colWidth:colWidth).navigationBarHidden(true).padding(.bottom, 90)
+                    case 2 : categoryView().padding(.bottom, 90)
+                    case 3 : ProfileView().navigationBarHidden(true).padding(.bottom, 90)
+                    default:
+                        TimeLineView(colWidth:colWidth).navigationBarHidden(true).padding(.bottom, 90)
                     }
-                    .tabItem {
-                        Image(systemName: "house.fill")
+                    
+                    Circle()
+                        .frame(width: 90, height: 90)
+                        .offset(x : self.CirclePosition(tabIndex: tabIndex, geometry: geometry), y : 0)
+                        .foregroundColor(bgColor)
+                        .padding(20)
+                        
+                    VStack(spacing : 0) {
+                        HStack(spacing : 0) {
+                            Button(action : {
+                                withAnimation {
+                                    self.tabIndex = 1
+                                }
+                            }) {
+                                Image(systemName : "house.fill")
+                                    .foregroundColor(.white)
+                                    .font(.system(size : 25))
+                                    .scaleEffect(self.tabIndex == 1 ? self.largerScale : 1.0)
+                                    .frame(width : geometry.size.width / 3, height: 50)
+                                    .offset(y : self.tabIndex == 1 ? -10 : 0)
+                            }.background(bgColor)
+                            Button(action : {
+                                withAnimation {
+                                    self.tabIndex = 2
+                                }
+                            }) {
+                                Image(systemName: "square.grid.3x3.fill")
+                                    .foregroundColor(.white)                                    .font(.system(size : 25))
+                                    .scaleEffect(self.tabIndex == 2 ? self.largerScale : 1.0)
+                                    .frame(width : geometry.size.width / 3, height: 50)
+                                    .offset(y : self.tabIndex == 2 ? -10 : 0)
+                            }.background(bgColor)
+                            Button(action : {
+                                withAnimation {
+                                    self.tabIndex = 3
+                                }
+                            }) {
+                                Image(systemName : "person.circle.fill")
+                                    .foregroundColor(.white)                                    .font(.system(size : 25))
+                                    .scaleEffect(self.tabIndex == 3 ? self.largerScale : 1.0)
+                                    .frame(width : geometry.size.width / 3, height: 50)
+                                    .offset(y : self.tabIndex == 3 ? -10 : 0)
+                            }.background(bgColor)
+                        } // HStack
+                        .padding(.bottom, 20)
+                        Spacer()
+                            .frame(height : 20)
+                            .background(bgColor)
                     }
-                
-                VStack {
-//                    NavView(colWidth: colWidth, x:$x)
-//                    NavigationView {
-                        categoryView()
-//                    }
+                    .background(bgColor)
                 }
-                .tabItem {
-                    Image(systemName: "square.grid.3x3.fill")
-                }
-                VStack(){
-//                    NavView(colWidth: colWidth, x:$x)
-                    ProfileView().navigationBarHidden(true)
-                }
-                .tabItem {
-                    Image(systemName: "person")
-                }
+                .edgesIgnoringSafeArea(.bottom)
             }
-        }
         }
     }
 }
-
-
-
-

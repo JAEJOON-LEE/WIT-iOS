@@ -59,55 +59,73 @@ struct PostView: View {
     }
     
     var body: some View {
-        VStack{
-            Text("New Post").font(.largeTitle)
-            
+        VStack(spacing : 0){
             VStack{
                 if postImage != nil {
                     postImage!.resizable()
-                        .frame(width: 340, height: 250)
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.4)
                         .onTapGesture {
                             self.showingActionSheet = true
                         }
                 } else{
-                    Image(systemName: "photo.fill").resizable()
+//                    Image(systemName: "photo.fill").resizable()
+                    Text("Click here to Choose Photo")
+                        .foregroundColor(.white)
                         .frame(width: 340, height: 250)
                         .onTapGesture {
                             self.showingActionSheet = true
                         }
                 }
             }
-            .padding(.bottom)
-            HStack{
-                Text("#Title")
-                Spacer()
-            }
-            .padding(.leading)
-            TextEditor(text: $titleText)
-                .frame(height: 30)
-                .padding(4)
-                .background(RoundedRectangle(cornerRadius: 8).stroke(Color.blue))
-                .padding(.horizontal)
             
-            HStack{
-                Text("#Description")
-                Spacer()
-            }
-            .padding(.leading)
-            TextEditor(text: $dscText)
-                .frame(height: 60)
-                .padding(4)
-                .background(RoundedRectangle(cornerRadius: 8).stroke(Color.blue))
-                .padding(.horizontal)
-            Button(action:uploadPost){
-                Text("Upload Post").font(.title)
-            }.alert(isPresented: $showingAlert) {
-                Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
-            }
-            .padding(.bottom,20)
-            .padding(.top,5)
+            .frame(width : UIScreen.main.bounds.width, height : UIScreen.main.bounds.height * 0.4)
+            .background(Color.black.opacity(0.3))
+            
+            VStack (alignment : .leading) {
+                Text("Create New Post")
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .padding()
                 
-        }.padding()
+                VStack(alignment : .leading) {
+                // Title
+                    Text("#Title")
+                        .foregroundColor(.white.opacity(0.8))
+                    TextEditor(text: $titleText)
+                        .background(Color.red)
+                        .frame(height: 30)
+                    Spacer().frame(height : 20)
+                    // Description
+                    Text("#Description")
+                        .foregroundColor(.white.opacity(0.8))
+                    TextEditor(text: $dscText)
+                        .frame(height: 60)
+                        .background(RoundedRectangle(cornerRadius: 10).fill(Color.red))
+                }
+                .padding()
+                
+                Spacer()
+                
+                HStack {
+                    Spacer()
+                    Button(action:uploadPost){
+                        Text("Upload Post")
+                            .foregroundColor(.white)
+                            .frame(width : UIScreen.main.bounds.width * 0.7, height: 40)
+                            .font(.title)
+                            .padding()
+                            .background(Color.secondary)
+                            .cornerRadius(15)
+                    }.alert(isPresented: $showingAlert) {
+                        Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
+                    }
+                    Spacer()
+                }
+                .padding(.bottom, 60)
+            }
+            .background(Color.black.opacity(0.5))
+        }
+        .edgesIgnoringSafeArea(.bottom)
         .sheet(isPresented: $showingImagePicker, onDismiss: loadImage){
             ImagePicker(pickedImage: self.$pickedImage, showingImagePicker: self.$showingImagePicker, imageData:self.$imageData)
         }.actionSheet(isPresented: $showingActionSheet){
@@ -123,7 +141,6 @@ struct PostView: View {
             ])
         }
         
+        
     }
 }
-
-
