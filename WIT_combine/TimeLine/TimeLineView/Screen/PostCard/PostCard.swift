@@ -17,6 +17,7 @@ struct PostCard: View {
     private var animationScale: CGFloat{
         postCardService.isLiked ? 1.2 : 1.2
     }
+    @State private var scaleValue = CGFloat(1)
     
     init(post: PostModel){
         self.postCardService.post = post
@@ -48,15 +49,17 @@ struct PostCard: View {
                         .animation(.easeIn(duration: duration))
                 }
                 // Bookmark Button
-                Button {
-                    isBookmarked.toggle()
-                    likeAnimate.toggle()
-                } label : {
-                    Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
-                        .font(.system(size : 20))
-                        .foregroundColor(isBookmarked ? .blue : .black)
-                        .scaleEffect(bookmarkAnimate ? animationScale : 1)
-                }
+
+                Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                    .font(.system(size : 20))
+                    .foregroundColor(isBookmarked ? .blue : .black)
+                    .scaleEffect(self.scaleValue)
+                    .onTapGesture {
+                        isBookmarked.toggle()
+                        bookmarkAnimate.toggle()
+                        withAnimation { self.scaleValue = 1.2 }
+                        withAnimation(Animation.linear.delay(0.5)) { self.scaleValue = 1.0 }
+                    }
                 Spacer()
             } // HStack
             .frame(height : 30)

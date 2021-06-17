@@ -144,23 +144,18 @@ struct Login : View {
             HStack{
                 Spacer().frame(width : 35)
                 VStack(alignment: .leading, spacing: 12) {
-
                     Text("Hello,")
                         .fontWeight(.bold)
-
                     Text("Here is WIT")
                         .font(.title)
                         .fontWeight(.bold)
-
-                    Button(action: {}) {
-
-                        Text("당신의 첫 인상을 관리합니다.")
-                            .font(.system(size: 14))
-                            .fontWeight(.bold)
-                            .foregroundColor(Color.gray)
-                    }
+                    Text("당신의 첫 인상을 관리합니다.")
+                        .font(.system(size: 14))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.gray)
                 }
-
+//                Image(systemName: "face.smiling.fill")
+//                    .frame(width: 100, height: 100)
                 Spacer(minLength: 0)
             }
             .padding(.horizontal,25)

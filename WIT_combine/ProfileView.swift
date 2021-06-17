@@ -18,14 +18,14 @@ struct ProfileView : View {
     
     var body : some View{
         VStack {
-//        Image("person1") //프로필사진
-            WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "")!)
+            WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "https://karateinthewoodlands.com/wp-content/uploads/2017/09/default-user-image.png")!)
                 .resizable()
                 .scaledToFit()
                 .edgesIgnoringSafeArea(.top)
                 .clipShape(Circle())
-                .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
+                //.overlay(Circle().stroke(Color.yellow, lineWidth: 5))
                 .shadow(radius: 5)
+                .padding(.top, 20)
             VStack{
                 Spacer()
                 ZStack(alignment: .top) {
@@ -35,12 +35,13 @@ struct ProfileView : View {
                                 //이름
                                 Text("\(Auth.auth().currentUser?.displayName ?? "undefined" )")
                                     .font(.title)
+                                    .bold()
                             }
                             Spacer()
                         }.padding(.top,35)
                         
                         Text("\(comment)")
-                            .frame(height : 100)
+                            .frame(height : 80)
                             .padding(.top)
                             .opacity(0.5)
                         }
@@ -61,7 +62,7 @@ struct ProfileView : View {
                                 .background(Color.white)
                                 .clipShape(Circle())
                         }//클릭하면 이미지 업로드 창
-                        Circle().stroke(Color.yellow, lineWidth: 5).frame(width: 70, height: 70)
+                        Circle().stroke(Color.black, lineWidth: 2).frame(width: 70, height: 70)
                     }.offset(y: -35)
                     
                     HStack{
@@ -77,6 +78,7 @@ struct ProfileView : View {
                             })
                         
                         Spacer()
+                            .frame(width : 150)
                         Button(action: session.logout){
                             Image("logout").renderingMode(.original).resizable()
                                 .frame(width: 25, height: 25)

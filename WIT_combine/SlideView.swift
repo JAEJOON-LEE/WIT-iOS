@@ -19,41 +19,22 @@ struct SlideView : View {
             VStack(alignment: .leading){
                 Spacer()
                     .frame(height : 40)
-                WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "")!)
-                    .resizable()
-                    .frame(width: 100, height: 100)
-                    .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
-                    .padding(.leading)
-                
-                HStack(alignment: .top, spacing: 12){
-                    VStack(alignment: .leading, spacing: 12){
-                        Text("\(Auth.auth().currentUser?.displayName ?? "undefined" )") //username
-                                .font(.title3)
-                                .fontWeight(.bold)
-                                .foregroundColor(.black)
-                                .padding(.leading)
-                            Text("@twoj") //id
-                                .foregroundColor(.gray)
-                                .padding(.leading)
-                        
-                        Divider()
-                            .padding(.top, 10)
-                    }
-                    
-                    Spacer(minLength: 0)
-                    
-                    Button(action: {
-                        withAnimation{
-                            show.toggle()
-                        }
-                    }){
-                        Image(systemName: show ? "chevron.up" : "chevron.down")
-                            .foregroundColor(Color.blue)
-                    }
-                }
-                
-                // 아래 버튼 눌렀을 때 다른 뷰
+                HStack {
+                    WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "https://karateinthewoodlands.com/wp-content/uploads/2017/09/default-user-image.png")!)
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .clipShape(Circle())
+                        .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                        .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
+                    Text("\(Auth.auth().currentUser?.displayName ?? "undefined")") //username
+                            .font(.title3)
+                            .fontWeight(.bold)
+                            .foregroundColor(.black)
+                            .padding(.leading)
+                }.padding(.leading)
+
+                Divider()
+                    .padding(.vertical, 10)
                 
                 VStack(alignment: .leading){
                     
@@ -69,27 +50,12 @@ struct SlideView : View {
                         .padding(.top)
                     
                     Button(action: session.logout){
-                        Text("Log Out").foregroundColor(Color.black)
+                        Text("Log Out")
+                            .foregroundColor(Color.black)
+                            .bold()
                     }
                     .padding(.leading)
-                    
-                    Divider()
-                    
-//                    Button(action: {
-//
-//                    }){
-//                        Text("내 이름은")
-//                            .foregroundColor(.black)
-//                    }
-//                    .padding(.top)
-//
-//                    Button(action: {
-//
-//                    }){
-//                        Text("이재준")
-//                            .foregroundColor(.black)
-//                    }
-//                    .padding(.top, 20)
+                    .padding(.vertical, 20)
                     
                     Spacer(minLength: 0)
                     
@@ -97,26 +63,12 @@ struct SlideView : View {
                         .padding(.bottom)
                     
                     HStack {
-//                        Button(action:{}){
-//                            Image(systemName: "applelogo")
-//                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-//                                .resizable()
-//                                .frame(width: 26, height: 26)
-//                                .foregroundColor(Color.black)
-//                        }
                         Spacer()
                         VStack{
                             Text("copyrightⓒ")
                             Text("2021 All rights reserved by WIT")
                         }
                         Spacer()
-//                        Button(action:{}){
-//                            Image(systemName: "barcode")
-//                                .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
-//                                .resizable()
-//                                .frame(width: 26, height: 26)
-//                                .foregroundColor(Color.black)
-//                        }
                     }
                 }
                 .opacity(show ? 1: 0)

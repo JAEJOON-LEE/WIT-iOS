@@ -115,16 +115,18 @@ struct itemInfo : View {
                         
                         HStack {
                             Text(product.name)
-                                .font(.custom("Roboto Regular", size: 30))
+//                                .font(.custom("Roboto Regular", size: 30))
+                                .font(.system(size : 30))
+                                .bold()
                                 .padding(.horizontal, 20)
                             Spacer()
                         }
                         
                         HStack {
-                            Spacer()
                             Text("\(product.cate) > \(product.subCate)")
                                 .font(.custom("Roboto Regular", size: 20))
                                 .foregroundColor(.secondary)
+                            Spacer()
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 5)

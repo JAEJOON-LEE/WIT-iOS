@@ -57,7 +57,8 @@ struct NewProfile : View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
-                    .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
+//                    .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
+                    .shadow(radius: 5)
         }
         .padding(.horizontal,25)
         .padding(.top,30)
@@ -69,7 +70,7 @@ struct NewProfile : View {
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            TextField("password to be changed", text: $password)
+            TextField("Password to be changed", text: $password)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -77,7 +78,7 @@ struct NewProfile : View {
                 .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
 
-            TextField("type password again", text: $password2)
+            TextField("Type password again", text: $password2)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -110,12 +111,16 @@ struct NewProfile : View {
 
                     Text("저장")
                         .font(.system(size: 20))
-                        .foregroundColor(.black)
+                        .foregroundColor(.white)
                         .fontWeight(.bold)
                         .padding(.vertical)
                         .frame(width: UIScreen.main.bounds.width-50)
                 }
             }
+            .background(Color.secondary)
+            .cornerRadius(8)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+            .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
         }
         .padding(.horizontal,25)
     }
