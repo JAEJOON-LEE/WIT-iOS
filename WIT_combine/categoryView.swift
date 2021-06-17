@@ -11,6 +11,7 @@ struct categoryView: View {
     private var numberOfCate = 3
     private let timer = Timer.publish(every: 3, on: .main, in: .common).autoconnect()
     @State var currentIndex = 0
+    private var categories : [String] = ["upper", "bottom", "shoes"]
     
     func previous(){
         withAnimation{
@@ -32,7 +33,7 @@ struct categoryView: View {
             TabView(selection: $currentIndex) {
                 ForEach(0..<numberOfCate){ num in
                     NavigationLink(
-                        destination: closetView(),
+                        destination: closetView(category : categories[num]),
                         label: {
                             Image("\(num)")
                                 .resizable()

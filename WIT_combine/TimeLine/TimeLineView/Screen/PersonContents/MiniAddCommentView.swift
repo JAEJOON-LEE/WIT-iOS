@@ -23,10 +23,10 @@ struct MiniAddCommentView: View {
         ZStack{
             HStack(spacing:10){
                 TextField(placeholder, text: $vm.commentTxt)
-                    .frame(height:25)
+                    .frame(width : UIScreen.main.bounds.width * 0.8, height:25)
                         .overlay(RoundedRectangle(cornerRadius: 5)
                                 .stroke(Color.gray,lineWidth: 0.1))
-                emojiButton("💜")
+                emojiButton("❤️")
                 Button {
                     self.vm.commentTxt = ""
                 
@@ -34,8 +34,9 @@ struct MiniAddCommentView: View {
                     Image(systemName: "plus.circle")
                         .frame(width: 20)
                         .padding(.trailing,65)
+                        .foregroundColor(.black)
                 }
-        }
+            }
             .padding(.leading,5)
         }
     }

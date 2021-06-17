@@ -9,7 +9,10 @@ import SwiftUI
 struct PostCard: View {
     @ObservedObject var postCardService = PostCardService()
     
-    @State private var animate = false
+    @State private var likeAnimate = false
+    @State private var bookmarkAnimate = false
+    @State private var isBookmarked : Bool = false
+    
     private let duration : Double = 0.3
     private var animationScale: CGFloat{
         postCardService.isLiked ? 1.2 : 1.2
@@ -21,15 +24,15 @@ struct PostCard: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading){
-            HStack(spacing: 0){
-                
+        VStack(alignment: .leading, spacing : 10){
+            HStack(spacing: 20){
+                // Like Button
                 Button(action: {
-                    self.animate = true
+                    self.likeAnimate = true
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + self.duration,
                                                   execute: {
-                                                    self.animate = false
+                                                    self.likeAnimate = false
                                                     
                                                     if(self.postCardService.isLiked){
                                                         self.postCardService.unlike()
@@ -38,51 +41,45 @@ struct PostCard: View {
                                                     }
                                                   })
                 }){
-                    
                     Image(systemName: (self.postCardService.isLiked) ? "hand.thumbsup.fill" : "hand.thumbsup")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 23)
+                        .font(.system(size : 20))
                         .foregroundColor((self.postCardService.isLiked) ? .blue : .black)
-                        .padding().scaleEffect(animate ? animationScale : 1)
+                        .scaleEffect(likeAnimate ? animationScale : 1)
                         .animation(.easeIn(duration: duration))
-                        
-                    
                 }
-                Image(systemName: "bookmark")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 15)
-                    .padding(.leading,15)
-                
+                // Bookmark Button
+                Button {
+                    isBookmarked.toggle()
+                    likeAnimate.toggle()
+                } label : {
+                    Image(systemName: isBookmarked ? "bookmark.fill" : "bookmark")
+                        .font(.system(size : 20))
+                        .foregroundColor(isBookmarked ? .blue : .black)
+                        .scaleEffect(bookmarkAnimate ? animationScale : 1)
+                }
                 Spacer()
-                if(self.postCardService.post.likeCount > 0) {
-                    Text("\(self.postCardService.post.likeCount) likes")
-                        .stylePrimary()
-                        .padding(.trailing,5)
-                }
-                
-            }.padding(.bottom,5)
-
+            } // HStack
+            .frame(height : 30)
+            
+            if(self.postCardService.post.likeCount > 0) {
+                Text("\(self.postCardService.post.likeCount) likes")
+                    .stylePrimary()
+            }
             HStack{
-                HStack{
-                    Text(self.postCardService.post.username)
-                        .stylePrimary()
-                    Text(self.postCardService.post.caption)
-                        .styleSecondary()
-                }
-                .padding(.bottom,5)
+                Text(self.postCardService.post.username)
+                    .stylePrimary()
+                Text(self.postCardService.post.caption)
+                    .styleSecondary()
                 Spacer()
             }
+            
             HStack{
                 Text("View Comments")
                     .styleTertiary()
                     .font(.caption)
-                    .padding(.leading)
                 Spacer()
             }
             MiniAddCommentView()
-                
-        }
-    }
+        }.padding(.horizontal, 10)
+    } // body
 }

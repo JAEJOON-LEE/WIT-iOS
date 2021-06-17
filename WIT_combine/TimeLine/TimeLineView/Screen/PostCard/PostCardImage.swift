@@ -15,21 +15,20 @@ struct PostCardImage: View {
     var body: some View {
         LazyVStack(alignment:.leading){
             HStack {
-                
                 WebImage(url:URL(string: post.profile)!)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width:35)
-                    .padding(3)
+                    .padding(.vertical, 3)
                     .clipShape(Circle())
-                    .overlay(Circle()
-                    .stroke(Color.blue,lineWidth: 1))
+//                    .overlay(Circle()
+//                    .stroke(Color.blue,lineWidth: 1))
                 
                 VStack(alignment:.leading){
                     Text(post.username)
                         .font(.system(size:15))
                         .fontWeight(.bold)
-                        .padding(.bottom,0.1)
+//                        .padding(.bottom,0.1)
                         
                     Text((Date(timeIntervalSince1970: post.date)).timeAgo()+" ago")
                         .font(.subheadline)

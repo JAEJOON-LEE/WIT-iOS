@@ -82,7 +82,7 @@ struct HomePage : View {
                     switch (tabIndex) {
                     case 1 : TimeLineView(colWidth:colWidth).navigationBarHidden(true).padding(.bottom, 90)
                     case 2 : categoryView().padding(.bottom, 90)
-                    case 3 : ProfileView().navigationBarHidden(true).padding(.bottom, 90)
+                    case 3 : ProfileView().navigationBarHidden(true).padding(.bottom, 100)
                     default:
                         TimeLineView(colWidth:colWidth).navigationBarHidden(true).padding(.bottom, 90)
                     }
@@ -130,7 +130,7 @@ struct HomePage : View {
                                     .offset(y : self.tabIndex == 3 ? -10 : 0)
                             }.background(bgColor)
                         } // HStack
-                        .padding(.bottom, 20)
+                        .padding(.bottom, 10)
                         Spacer()
                             .frame(height : 20)
                             .background(bgColor)
