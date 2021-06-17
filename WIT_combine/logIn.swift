@@ -18,7 +18,6 @@ struct logIn : View {
     @Namespace var name
 
     var body: some View{
-//        NavigationView {
             VStack{
                 if (index == -1 || index == 1) {
                     Text("WIT")
@@ -94,7 +93,6 @@ struct logIn : View {
                     Home()
                 }
             }
-//        } // navigationview
     }
 }
 
