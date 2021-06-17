@@ -2,7 +2,11 @@
 
 # Kyungpook National University
 # MobileAppProgramming2(iOSAppProgramming)
-# Final Project Team 9 - WIT
+# Final Team Project 
+## Team 9 - WIT
+
+Welcome to WIT git repository.
+_______________________________________________________________________________________________________________
 
 ### What is WIT?
 WIT is a iOS Application for managing your daily look. You can manage your all of clothes in your closet of this app. 
