@@ -2,10 +2,9 @@
 
 # Kyungpook National University
 # MobileAppProgramming2(iOSAppProgramming)
-# Final Team Project 
-## Team 9 - WIT
+# Team 9 - WIT : Final Team Project 
 
-Welcome to WIT git repository.
+## Welcome to WIT git repository.
 _______________________________________________________________________________________________________________
 
 ### What is WIT?
@@ -14,5 +13,8 @@ WIT provides the function that recommend your daily look using color recommendat
 
 ### Contributors : 
 Jaejoon Lee, Seungmin Lee, Juyeong Jung, Gyurim Park (all students belong to KNU)
+
+_______________________________________________________________________________________________________________
+
 
 ![WIT_README 001](https://user-images.githubusercontent.com/45229285/122474323-0526be00-cffe-11eb-8995-8505283fed2d.jpeg)
