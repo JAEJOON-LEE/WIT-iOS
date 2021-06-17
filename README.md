@@ -1,5 +1,11 @@
-# iOSAppProgramming
+![WIT](https://user-images.githubusercontent.com/45229285/122432539-5fa92580-cfd0-11eb-9760-3d2a5ba65694.png)
 
-## Mobile App Programming 2 Final Project Team 9 - WIT
+# Kyungpook National University
+# MobileAppProgramming2(iOSAppProgramming)
+# Final Project Team 9 - WIT
 
-contributor : Jaejoon Lee, Seungmin Lee, Juyeong Jung, Gyurim Park
+### What is WIT?
+WIT is a iOS Application for managing your daily look. You can manage your all of clothes in your closet of this app. 
+WIT provide the function that recommend your daily look using color recommendation algorithm. You can enjoy going out!
+
+### Contributors : Jaejoon Lee, Seungmin Lee, Juyeong Jung, Gyurim Park (all students belong to KNU)
