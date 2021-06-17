@@ -14,26 +14,27 @@ struct UpdateProfile : View {
     @Namespace var name
 
     var body: some View{
-
-            VStack{
-                Text("회원 정보 수정")
-                    .font(.system(size : 30))
-                    .fontWeight(.bold)
-                
-                Divider()
-            }
-            .padding(.top)
+//
+//            VStack{
+//                Text("회원 정보 수정")
+//                    .font(.system(size : 30))
+//                    .fontWeight(.bold)
+//
+//                Divider()
+//            }
+//            .padding(.top)
 
                 NewProfile()
+                    .navigationBarTitle(Text("회원 정보 수정"), displayMode: .inline)
     }
 }
 
 struct NewProfile : View {
 
-    @State var user = "999rimmy" // Binding으로 바꿔야할듯?
+    @State var user = "UserName" // Binding으로 바꿔야할듯?
     @State var password = ""
     @State var password2 = ""
-    @State var comment = "마이네임이즈규림파크"
+    @State var comment = "자기소개 자기를 소개합니다"
 //    @State var age = ""
 //    @State var gender = ""
 //    var genders = ["Man", "Woman"]
@@ -71,7 +72,7 @@ struct NewProfile : View {
 
         VStack(alignment: .leading, spacing: 15) {
 
-            Text("Password")
+            Text("비밀번호 변경")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
@@ -93,7 +94,7 @@ struct NewProfile : View {
                 .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
                 
             
-            Text("Comment")
+            Text("자기소개")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
@@ -110,31 +111,21 @@ struct NewProfile : View {
             .padding(.horizontal,25)
             .padding(.top,25)
             
-        Spacer()
-        HStack {
-        Button(action: {}) {
+            Spacer()
+                .frame(height : 40)
+            HStack {
+                Button(action: {}) {
 
-            Text("저장")
-                .font(.system(size: 20))
-                .foregroundColor(.black)
-                .fontWeight(.bold)
-                .padding(.vertical)
-                .frame(width: UIScreen.main.bounds.width/2-50)
-        }
-        
-        
-        Button(action: {}) {
-
-            Text("취소")
-                .font(.system(size: 20))
-                .foregroundColor(.black)
-                .fontWeight(.bold)
-                .padding(.vertical)
-                .frame(width: UIScreen.main.bounds.width/2-50)
-                .background(Color.white)        }
-        }
+                    Text("저장")
+                        .font(.system(size: 20))
+                        .foregroundColor(.black)
+                        .fontWeight(.bold)
+                        .padding(.vertical)
+                        .frame(width: UIScreen.main.bounds.width-50)
+                }
+            }
         }
         .padding(.horizontal,25)
-        .padding(.top,25)
     }
 }
+

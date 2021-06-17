@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MiniAddCommentView: View {
     
-    var person: Person
     @StateObject var vm: MiniAddCommentViewModel = MiniAddCommentViewModel()
     let placeholder = "Add a comment"
     

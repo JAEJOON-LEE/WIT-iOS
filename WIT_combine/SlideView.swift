@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SlideView : View {
     
+    @EnvironmentObject var session : SessionStore
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var show = true
     
@@ -17,36 +18,28 @@ struct SlideView : View {
         HStack(spacing: 0){
             
             VStack(alignment: .leading){
-                Image(systemName: "j.circle.fill")
+                
+                Spacer()
+                    .frame(height : 40)
+                Image("person1")
                     .resizable()
-                    .frame(width: 60, height: 60)
+                    .frame(width: 100, height: 100)
                     .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
+                    .padding(.leading)
                 
                 HStack(alignment: .top, spacing: 12){
                     
                     VStack(alignment: .leading, spacing: 12){
-                        Text("Jaejoon")
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundColor(.black)
                         
-                        Text("@twoj")
-                            .foregroundColor(.gray)
-                        
-                        HStack(spacing: 20){
-                            FollowView(count:8, title: "Following")
-                                .font(.footnote)
-                                .onTapGesture {
-                                    //뭐든
-                                }
-                            
-                            FollowView(count:108, title: "Following")
-                                .font(.footnote)
-                                .onTapGesture {
-                                    //아무튼만듬
-                                }
-                        }
-                        .padding(.top, 10)
+                            Text("Jaejoon") //username
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                .padding(.leading)
+                            Text("@twoj") //id
+                                .foregroundColor(.gray)
+                                .padding(.leading)
                         
                         Divider()
                             .padding(.top, 10)
@@ -59,7 +52,7 @@ struct SlideView : View {
                             show.toggle()
                         }
                     }){
-                        Image(systemName: show ? "chevron.down" : "chevron.up")
+                        Image(systemName: show ? "chevron.up" : "chevron.down")
                             .foregroundColor(Color.blue)
                     }
                 }
@@ -72,17 +65,17 @@ struct SlideView : View {
                         Button(action: {
                         }){
                             MenuButton(title: menu)
+                                .padding(.leading)
                         }
                     }
                     
                     Divider()
                         .padding(.top)
                     
-                    Button(action: {
-                        
-                    }){
-                        MenuButton(title: "Log out")
+                    Button(action: session.logout){
+                        Text("Log Out").foregroundColor(Color.black)
                     }
+                    .padding(.leading)
                     
                     Divider()
                     
@@ -136,14 +129,9 @@ struct SlideView : View {
                 VStack(alignment: .leading){
                     
                     Button(action: {}){
-                        Text("~~~~~")
-                            .foregroundColor(Color.blue)
-                    }
-                    .padding(.bottom)
-                    
-                    Button(action: {}){
-                        Text("~~~~~")
-                            .foregroundColor(Color.blue)
+                        Text("Log Out")
+                            .foregroundColor(Color.black)
+                            .padding(.leading)
                     }
                     
                     Spacer(minLength: 0)
@@ -179,7 +167,7 @@ struct FollowView : View {
     }
 }
 
-var menuButtons = ["Timeline", "Closet", "Search", "이건뭐?", "Profile"]
+var menuButtons = ["Timeline", "Closet", "Profile"]
 
 struct MenuButton : View {
     var title : String

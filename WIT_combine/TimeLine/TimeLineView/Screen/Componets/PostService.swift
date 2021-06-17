@@ -27,7 +27,6 @@ class PostService {
         guard let userId = Auth.auth().currentUser?.uid else {
             return
         }
-        //let userId = "1234"
         
         let postId = PostService.PostsUserId(userId: userId).collection("posts").document().documentID
         
@@ -37,6 +36,28 @@ class PostService {
         
         StorageService.savePostPhoto(userId: userId, caption: caption, postId: postId, imageData: imageData, metadata: metadata, storagePostRef: storagePostRef, onSuccess: onSuccess, onError: onError)
     
+    }
+    static func loadUserPosts(userId:String,onSuccess:@escaping(_ posts : [PostModel])->Void){
+        PostService.PostsUserId(userId:userId).collection("posts").getDocuments{
+            (snapshot,error) in
+            
+            guard let snap = snapshot else{
+                print("error ps")
+                return
+            }
+            
+            var posts = [PostModel]()
+            
+            for doc in snap.documents{
+                let dict = doc.data()
+                guard let decoder = try? PostModel.init(fromDictionary: dict) else{
+                    return
+                }
+                posts.append(decoder)
+            }
+            onSuccess(posts)
+            
+        }
     }
 }
 

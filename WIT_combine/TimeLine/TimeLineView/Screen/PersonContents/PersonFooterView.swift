@@ -14,8 +14,8 @@ struct PersonFooterView: View {
     var body: some View {
         if let content = content {
             VStack(alignment:.leading){
-                FooterActionBarView(colWidth: colWidth)
-                    .padding(.bottom,10)
+//                FooterActionBarView(colWidth: colWidth)
+//                    .padding(.bottom,10)
                 Text("\(content.likeCount) Likes")
                     .stylePrimary()
                     .padding(.bottom,5)
@@ -30,7 +30,7 @@ struct PersonFooterView: View {
                     Spacer()
                 }
                 CommentsLinkViews(comments: content.comments , content: content, colWidth:colWidth)
-                MiniAddCommentView(person:content.owner)
+                MiniAddCommentView()
             }
         }
             
