@@ -24,10 +24,10 @@ struct TimeLineView: View {
                             .padding(.leading,10)
                             .padding(.trailing,10)
                             .padding(.bottom,15)
-//                        PersonBodyView(colWidth:colWidth)
-//                            .padding(.leading,5)
-//                            .padding(.trailing,5)
-//                            .padding(.bottom,10)
+                        PersonBodyView(colWidth:colWidth)
+                            .padding(.leading,5)
+                            .padding(.trailing,5)
+                            .padding(.bottom,10)
                         
                     }
                 }

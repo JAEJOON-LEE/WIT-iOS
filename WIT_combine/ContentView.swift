@@ -17,9 +17,8 @@ struct ContentView: View {
             } else {
                 logIn()
             }
+//            logIn()
         }.onAppear(perform: listen)
         
     }
 }
-
-

@@ -140,3 +140,4 @@ func takeCapture() -> UIImage {
 
         return image ?? UIImage()
     }
+
