@@ -7,23 +7,13 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
+import FirebaseAuth
 
 struct UpdateProfile : View {
-
     @State var index = 0
     @Namespace var name
-
     var body: some View{
-//
-//            VStack{
-//                Text("회원 정보 수정")
-//                    .font(.system(size : 30))
-//                    .fontWeight(.bold)
-//
-//                Divider()
-//            }
-//            .padding(.top)
-
                 NewProfile()
                     .navigationBarTitle(Text("회원 정보 수정"), displayMode: .inline)
     }
@@ -34,7 +24,7 @@ struct NewProfile : View {
     @State var user = "UserName" // Binding으로 바꿔야할듯?
     @State var password = ""
     @State var password2 = ""
-    @State var comment = "자기소개 자기를 소개합니다"
+    @State var comment = ""
 //    @State var age = ""
 //    @State var gender = ""
 //    var genders = ["Man", "Woman"]
@@ -47,7 +37,7 @@ struct NewProfile : View {
 
                 VStack(alignment: .leading, spacing: 12) {
                     
-                    Text("\(user) 님,") //아이디 출력
+                    Text("\(Auth.auth().currentUser?.displayName ?? "undefined" )") //아이디 출력
                         .font(.title)
                         .fontWeight(.bold)
 
@@ -62,10 +52,12 @@ struct NewProfile : View {
                 Spacer(minLength: 0)
 
 
-                Image(systemName: "heart.circle.fill")
+                WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "")!)
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 85, height: 85)
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
         }
         .padding(.horizontal,25)
         .padding(.top,30)
@@ -128,4 +120,3 @@ struct NewProfile : View {
         .padding(.horizontal,25)
     }
 }
-

@@ -46,13 +46,14 @@ struct categoryView: View {
                         })
                 }
             }
-            .shadow(radius: 10)
             .tabViewStyle(PageTabViewStyle())
             .clipShape(RoundedRectangle(cornerRadius: 5))
             //.frame(width: proxy.size.width, height: proxy.size.height)
             .onReceive(timer, perform: { _ in
                 next()
             })
+            .shadow(color: Color.black.opacity(0.2), radius: 5, x:0, y:5)
+            .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:-5)
             .padding(.vertical, 20)
         }//Geometry view
         .navigationBarHidden(true)

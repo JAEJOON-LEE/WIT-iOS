@@ -6,22 +6,20 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import SDWebImageSwiftUI
 
 struct SlideView : View {
-    
     @EnvironmentObject var session : SessionStore
     var edges = UIApplication.shared.windows.first?.safeAreaInsets
     @State var show = true
     
     var body: some View {
-        
         HStack(spacing: 0){
-            
             VStack(alignment: .leading){
-                
                 Spacer()
                     .frame(height : 40)
-                Image("person1")
+                WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "")!)
                     .resizable()
                     .frame(width: 100, height: 100)
                     .clipShape(Circle())
@@ -29,10 +27,8 @@ struct SlideView : View {
                     .padding(.leading)
                 
                 HStack(alignment: .top, spacing: 12){
-                    
                     VStack(alignment: .leading, spacing: 12){
-                        
-                            Text("Jaejoon") //username
+                        Text("\(Auth.auth().currentUser?.displayName ?? "undefined" )") //username
                                 .font(.title3)
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)

@@ -24,7 +24,7 @@ struct logIn : View {
                     Text("WIT")
                         .font(.system(size : 30))
                         .fontWeight(.bold)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.black)
                         .frame(width: 70)
                     HStack(spacing: 0){
                         Button(action: {
@@ -141,9 +141,8 @@ struct Login : View {
 
     var body: some View{
         VStack{
-
             HStack{
-
+                Spacer().frame(width : 35)
                 VStack(alignment: .leading, spacing: 12) {
 
                     Text("Hello,")
@@ -163,24 +162,18 @@ struct Login : View {
                 }
 
                 Spacer(minLength: 0)
-
-
-                Image(systemName: "heart.circle.fill")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 85, height: 85)
             }
             .padding(.horizontal,25)
             .padding(.top,30)
 
             VStack(alignment: .leading, spacing: 15) {
 
-                Text("ID")
+                Text("e-mail")
                     .font(.caption)
                     .fontWeight(.bold)
                     .foregroundColor(.black)
 
-                TextField("id", text: $id)
+                TextField("e-mail", text: $id)
                     .padding()
                     .background(Color.white)
                     .cornerRadius(5)
@@ -193,7 +186,7 @@ struct Login : View {
                     .fontWeight(.bold)
                     .foregroundColor(.black)
 
-                TextField("password", text: $password)
+                SecureField("Password", text: $password)
                     .padding()
                     .background(Color.white)
                     .cornerRadius(5)
@@ -216,7 +209,6 @@ struct Login : View {
             // Login Button....
 
             Button(action: signIn) {
-//                NavigationLink(){
                 Text("Login")
                     .font(.system(size: 20))
                     .foregroundColor(.white)
@@ -224,55 +216,16 @@ struct Login : View {
                     .fontWeight(.bold)
                     .padding(.vertical)
                     .frame(width: UIScreen.main.bounds.width - 50)
-                    .background(
-                        LinearGradient(gradient: .init(colors: [Color.black ,Color.gray]),
-                                   startPoint: .topLeading, endPoint: .bottomTrailing)
-                )
-//                }
-                .cornerRadius(8)
+                    .background(Color.gray)
+                    .cornerRadius(8)
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                    .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
             }
             .alert(isPresented: $showingAlert) {
                 Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
             }
             .padding(.horizontal,25)
             .padding(.top,25)
-            // Social Buttons...
-
-            Button(action: {}) {
-
-                HStack(spacing: 30){
-
-                    Image(systemName: "message")
-                        .font(.system(size: 26))
-                        .foregroundColor(Color.black)
-
-                    Text("LogIn using KakaoTalk")
-                        .font(.system(size: 20))
-                        .fontWeight(.bold)
-                        .foregroundColor(Color.black)
-
-                    Spacer(minLength: 0)
-                }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
-                }
-                .padding(.horizontal,25)
-
-//            HStack(spacing: 30){
-//
-//                ForEach(social,id: \.self){name in
-//
-//                    Button(action: {}) {
-//
-//                        Image(systemName: name)
-//                            .renderingMode(.template)
-//                            .resizable()
-//                            .frame(width: 24,height: 24)
-//                            .foregroundColor(Color.black)
-//                    }
-//                }
-//            }
-//            .padding(.top,25)
         }
     }
 }
@@ -331,49 +284,56 @@ struct SignUp : View {
     }
     
     var body: some View{
-
         VStack{
-
-            HStack{
-
-                HStack(spacing: 12) {
-
-                    Text("Create Account")
-                        .font(.title)
-                        .fontWeight(.bold)
-                    Spacer()
-                    VStack{
-                        if postImage != nil {
-                            postImage!.resizable()
-                                .frame(width: 100, height: 100)
-                                .onTapGesture {
-                                    self.showingActionSheet = true
-                                }
-                        } else{
-                            Image(systemName: "photo.fill").resizable()
-                                .frame(width: 100, height: 100)
-                                .onTapGesture {
-                                    self.showingActionSheet = true
-                                }
-                                
-                        }
-                    }
-                    
-                }
-                Spacer(minLength: 0)
-        }
-        .padding(.horizontal,25)
-        .padding(.top,30)
-
         VStack(alignment: .leading, spacing: 15) {
+            
+            Text("Profile Photo")
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(.black)
+            VStack{
+                if postImage != nil {
+                    Text("Image Selected, Click Again to Select Photo")
+                        .opacity(0.1)
+                        .frame(width: UIScreen.main.bounds.width * 0.85, height: 27)
+                        .padding()
+                        .background(Color.white)
+                        .cornerRadius(5)
+                        // shadow effect...
+                        .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                        .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
+                        .onTapGesture {
+                            self.showingActionSheet = true
+                        }
+                } else {
+                    HStack {
+                        Image(systemName: "photo.fill")
+                            .resizable()
+                            .frame(width : 20, height: 17)
+                            .opacity(0.5)
 
+                        Text("Click Here to Select Photo")
+                            .opacity(0.5)
+                    }
+                    .frame(width: UIScreen.main.bounds.width * 0.85, height: 27)
+                    .onTapGesture {
+                        self.showingActionSheet = true
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(5)
+                    // shadow effect...
+                    .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                    .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
+                }
+            }
 
-            Text("ID")
+            Text("e-mail")
                 .font(.caption)
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            TextField("ID", text: $id)
+            TextField("e-mail", text: $id)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -386,7 +346,7 @@ struct SignUp : View {
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            TextField("password", text: $password)
+            SecureField("password", text: $password)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -401,7 +361,7 @@ struct SignUp : View {
                 .fontWeight(.bold)
                 .foregroundColor(.black)
 
-            TextField("please type your first name", text: $username)
+            TextField("Please type your first name", text: $username)
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -434,10 +394,10 @@ struct SignUp : View {
                 .fontWeight(.bold)
                 .padding(.vertical)
                 .frame(width: UIScreen.main.bounds.width - 50)
-                .background(
-                    LinearGradient(gradient: .init(colors: [Color.black, Color.gray]),
-                                    startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .cornerRadius(8)
+                .background(Color.gray)
+                .cornerRadius(8)
+                .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
         }.alert(isPresented: $showingAlert) {
             Alert(title: Text(alertTitle), message: Text(error), dismissButton: .default(Text("OK")))
         }

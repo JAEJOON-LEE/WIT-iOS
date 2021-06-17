@@ -72,8 +72,7 @@ struct closetView: View {
             //.background(Color.secondary)
             
         } // scrollview
-//        .navigationBarTitle(Text("CategoryName"))
-        .navigationBarTitle(Text(category))
+        .navigationBarTitle(Text(category), displayMode: .inline)
     }
 }
 
@@ -151,7 +150,6 @@ struct itemInfo : View {
                                     .font(.system(size : 30))
                                     .frame(width : 70, height : 70)
                                     .foregroundColor(heartBtnColor)
-                                    //.background(product.avgColor)
                                     .background(Color.secondary)
                                     .cornerRadius(15)
                             })
@@ -159,7 +157,6 @@ struct itemInfo : View {
                             Text("이 옷과 어울리는 옷 보기")
                                 .frame(width: geometry.size.width * 0.7, height: 70)
                                 .foregroundColor(Color.white)
-                                //.background(product.avgColor)
                                 .background(Color.secondary)
                                 .cornerRadius(15)
                                 .onTapGesture {
@@ -197,13 +194,13 @@ struct recommendItemView : View {
                 .bold()
                 .frame(width : UIScreen.main.bounds.width, height : UIScreen.main.bounds.height * 0.3)
                 .background(product.avgColor)
+                .overlay(Rectangle()
+                            .background(LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom)
+                                )
+                            .opacity(0.1)
+            )
         }
         .frame(width : UIScreen.main.bounds.width)
-        
-        // recommend clothes with algorithm
-//        ForEach(recommendMethod(avgColor: product.avgColor), id : \.self) { rcmdClothes in
-//            Text(rcmdClothes.name)
-//        }
         
         ScrollView {
             LazyVGrid(columns: [

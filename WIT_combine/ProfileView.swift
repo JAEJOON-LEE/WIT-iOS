@@ -6,107 +6,93 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+import SDWebImageSwiftUI
 
 struct ProfileView : View {
     
+    @EnvironmentObject var session : SessionStore
     @State var userName = "User Name"
     @State var userId = "UserID"
-    @State var comment = "정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 정기숙 교수님 최고 "
+    @State var comment = "Please write down your state."
+    
     var body : some View{
         VStack {
-        Image("person1") //프로필사진
-            .resizable()
-            .scaledToFit()
-            .edgesIgnoringSafeArea(.top)
-            .clipShape(Circle())
-            .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
-            .shadow(radius: 5)
-        VStack{
-            
-            Spacer()
-            
-            ZStack(alignment: .top) {
-                
-                VStack{
+//        Image("person1") //프로필사진
+            WebImage(url: URL(string:Auth.auth().currentUser?.photoURL!.absoluteString ?? "")!)
+                .resizable()
+                .scaledToFit()
+                .edgesIgnoringSafeArea(.top)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.yellow, lineWidth: 5))
+                .shadow(radius: 5)
+            VStack{
+                Spacer()
+                ZStack(alignment: .top) {
+                    VStack{
+                        HStack{
+                            VStack(alignment: .leading, spacing: 10){
+                                //이름
+                                Text("\(Auth.auth().currentUser?.displayName ?? "undefined" )")
+                                    .font(.title)
+                            }
+                            Spacer()
+                        }.padding(.top,35)
+                        
+                        Text("\(comment)")
+                            .frame(height : 100)
+                            .padding(.top)
+                            .opacity(0.5)
+                        }
+                        .padding()
+                        .background(Color.black.opacity(0.4))
+                        .foregroundColor(.white)
+                        .clipShape(BottomShape())
+                        .cornerRadius(25)
+                    ZStack{
+                        Button(action: {
+                            var screen = takeCapture()
+                            print(screen)
+                        }) {
+                            Image("ScreenCapture").renderingMode(.original)
+                                .imageScale(.large)
+                                .frame(width: 25, height: 25)
+                                .padding(20)
+                                .background(Color.white)
+                                .clipShape(Circle())
+                        }//클릭하면 이미지 업로드 창
+                        Circle().stroke(Color.yellow, lineWidth: 5).frame(width: 70, height: 70)
+                    }.offset(y: -35)
                     
                     HStack{
-                        
-                        VStack(alignment: .leading, spacing: 10){
-                            
-                            Text("\(userName)").font(.title)
-                            //이름
-                        }
+                        NavigationLink(
+                            destination: UpdateProfile(),//.navigationBarHidden(true),
+                            label: {
+                                Image(systemName: "slider.horizontal.3").renderingMode(.original).resizable()
+                                    .frame(width: 25, height: 20)
+                                    .padding()
+                                    .background(Color.white)
+                                    .clipShape(Circle())
+                                    .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                            })
                         
                         Spacer()
-                        HStack(spacing: 8){
-                            
-                            Text("@\(userId)")
-                            //아이디
-                            
-                        }.padding(8)
-                        .background(Color.black.opacity(0.5))
-                        .cornerRadius(10)
-                        
-                    }.padding(.top,35)
-                    
-                    Text("\(comment)")
-                        .padding(.top)
-                }
-                .padding()
-                .background(Color.black.opacity(0.4))
-                .foregroundColor(.white)
-                .clipShape(BottomShape())
-                .cornerRadius(25)
-                ZStack{
-                    
-                    Button(action: {
-                        var screen = takeCapture()
-                        print(screen)
-                    }) {
-                        
-                        Image("ScreenCapture").renderingMode(.original)
-                            .imageScale(.large)
-                            .frame(width: 25, height: 25)
-                            .padding(20)
-                            .background(Color.white)
-                            .clipShape(Circle())
-                    }//클릭하면 이미지 업로드 창
-                    
-                    Circle().stroke(Color.yellow, lineWidth: 5).frame(width: 70, height: 70)
-                
-            }.offset(y: -35)
-                
-                HStack{
-                    NavigationLink(
-                        destination: UpdateProfile(),//.navigationBarHidden(true),
-                        label: {
-                            Image(systemName: "slider.horizontal.3").renderingMode(.original).resizable()
-                                .frame(width: 25, height: 20)
+                        Button(action: session.logout){
+                            Image("logout").renderingMode(.original).resizable()
+                                .frame(width: 25, height: 25)
                                 .padding()
                                 .background(Color.white)
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.black, lineWidth: 2))
-                        })
-                    
-                    Spacer()
-                    Button(action: {
-                        //클릭하면 Home()으로 이동하던가 디비 세션 끊기
-                    }) {
-                        
-                        Image("logout").renderingMode(.original).resizable()
-                            .frame(width: 25, height: 25)
-                            .padding()
-                            .background(Color.white)
-                            .clipShape(Circle())
-                            .overlay(Circle().stroke(Color.black, lineWidth: 2))
+                        }
                     }
+                    .offset(y: -25)
+//                    .padding(.horizontal,35)
+                    .padding(.bottom, 35)
                 }
-                .offset(y: -25)
-                .padding(.horizontal,35)
             }
-        }
-        .padding()
-        }
+            .padding()
+            }
     }
 }
 

@@ -80,7 +80,7 @@ struct HomePage : View {
                 NavView(colWidth: colWidth, x:$x)
                 ZStack(alignment : .bottom) {
                     switch (tabIndex) {
-                    case 1 : TimeLineView(colWidth:colWidth).navigationBarHidden(true).padding(.bottom, 90)
+                    case 1 : TimeLineView(colWidth:colWidth).navigationBarHidden(true).padding(.bottom, 80)
                     case 2 : categoryView().padding(.bottom, 90)
                     case 3 : ProfileView().navigationBarHidden(true).padding(.bottom, 100)
                     default:
@@ -89,7 +89,7 @@ struct HomePage : View {
                     
                     Circle()
                         .frame(width: 90, height: 90)
-                        .offset(x : self.CirclePosition(tabIndex: tabIndex, geometry: geometry), y : 0)
+                        .offset(x : self.CirclePosition(tabIndex: tabIndex, geometry: geometry), y : 10)
                         .foregroundColor(bgColor)
                         .padding(20)
                         
@@ -106,6 +106,8 @@ struct HomePage : View {
                                     .scaleEffect(self.tabIndex == 1 ? self.largerScale : 1.0)
                                     .frame(width : geometry.size.width / 3, height: 50)
                                     .offset(y : self.tabIndex == 1 ? -10 : 0)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                                    .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
                             }.background(bgColor)
                             Button(action : {
                                 withAnimation {
@@ -117,6 +119,8 @@ struct HomePage : View {
                                     .scaleEffect(self.tabIndex == 2 ? self.largerScale : 1.0)
                                     .frame(width : geometry.size.width / 3, height: 50)
                                     .offset(y : self.tabIndex == 2 ? -10 : 0)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                                    .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
                             }.background(bgColor)
                             Button(action : {
                                 withAnimation {
@@ -128,6 +132,8 @@ struct HomePage : View {
                                     .scaleEffect(self.tabIndex == 3 ? self.largerScale : 1.0)
                                     .frame(width : geometry.size.width / 3, height: 50)
                                     .offset(y : self.tabIndex == 3 ? -10 : 0)
+                                    .shadow(color: Color.black.opacity(0.1), radius: 5, x:0, y:5)
+                                    .shadow(color: Color.black.opacity(0.08), radius: 5, x:0, y:-5)
                             }.background(bgColor)
                         } // HStack
                         .padding(.bottom, 10)
