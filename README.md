@@ -8,7 +8,7 @@
 _______________________________________________________________________________________________________________
 
 ### What is WIT?
-WIT is a iOS Application for managing your daily look. You can manage your all of clothes in your closet of this app. 
+WIT is an iOS Application for managing your daily look. You can manage your all of clothes in your closet of this app. 
 WIT provides the function that recommend your daily look using color recommendation algorithm. You can enjoy going out!
 
 ### Contributors : 
